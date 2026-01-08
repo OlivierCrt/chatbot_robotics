@@ -1,18 +1,70 @@
-version: "2.0"
+version: "3.1"
 
 rules:
 
-- rule: Say goodbye anytime the user says goodbye
+- rule: Say hello
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - intent: greet
+  - action: utter_greet
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: Ask robot basics
   steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - intent: ask_robot_basics
+  - action: utter_robot_basics
 
-- rule: Say 'You are welcome' anytime the user says Thanks
+- rule: Ask robot types
   steps:
-  - intent: thank_you
-  - action: utter_welcome
+  - intent: ask_robot_types
+  - action: utter_robot_types
+
+- rule: Ask articulation general
+  steps:
+  - intent: ask_articulation_general
+  - action: utter_articulation_general
+
+- rule: Ask articulation specific
+  steps:
+  - intent: ask_articulation_specific
+  - action: utter_articulation_specific
+  # Suggestion visuelle pour comprendre les liaisons
+  # 
+- rule: Ask control
+  steps:
+  - intent: ask_control
+  - action: utter_control
+
+- rule: Ask DOF
+  steps:
+  - intent: ask_dof
+  - action: utter_dof
+  # Suggestion visuelle pour les degrés de liberté
+  # 
+- rule: Ask trajectory
+  steps:
+  - intent: ask_trajectory
+  - action: utter_trajectory
+
+- rule: Ask math representation
+  steps:
+  - intent: ask_math_basics
+  - action: utter_math_basics
+
+- rule: Ask units
+  steps:
+  - intent: ask_units
+  - action: utter_units
+
+- rule: Ask kinematics
+  steps:
+  - intent: ask_kinematics
+  - action: utter_kinematics
+
+- rule: Ask example
+  steps:
+  - intent: ask_example_usage
+  - action: utter_example_usage
+  # 
+- rule: Ask clarification
+  steps:
+  - intent: ask_clarification
+  - action: utter_clarification

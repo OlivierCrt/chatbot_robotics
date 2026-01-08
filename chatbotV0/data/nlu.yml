@@ -1,111 +1,83 @@
-version: "2.0"
+version: "3.1"
+
 nlu:
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-    - Hello babe
-- intent: goodbye
+    - Salut!
+    - Bonjour
+    - Hey
+    - Coucou
+
+- intent: ask_robot_basics
   examples: |
-    - good afternoon
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-- intent: affirm
+    - comment marche un robot
+    - c'est quoi le principe d'un robot
+    - de quoi est composé un robot ?
+
+- intent: ask_robot_types
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-- intent: deny
+    - quels sont les different type de robot
+    - quel type de robot existe
+    - cite moi des catégories de robots
+
+- intent: ask_articulation_general
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-- intent: mood_great
+    - C est quoi une articulation?
+    - A quoi sert une articulation ?
+    - c'est quoi un joint ?
+
+- intent: ask_articulation_specific
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-- intent: mood_unhappy
+    - COmment fonctionne une artivulation prismatique plus précisément?
+    - explique moi la liaison rotoide
+    - c'est quoi une glissière ?
+    - c'est quoi un pivot ?
+
+- intent: ask_control
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-- intent: bot_challenge
+    - comment controler le robot?
+    - comment on pilote un robot ?
+    - c'est quoi la boucle de controle ?
+
+- intent: ask_dof
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
-- intent: thank_you
+    - C est quoi les degrès de liberté?
+    - c'est quoi un DDL ?
+    - degrés de liberté explication
+
+- intent: ask_trajectory
   examples: |
-    - thank you
-    - thanks
-    - many thanks
-- intent: other_picture
+    - c est quoi une trajectoire?
+    - comment le robot planifie son mouvement ?
+    - difference entre trajectoire et chemin
+
+- intent: ask_math_basics
   examples: |
-    - I would like to see another animal
-    - Do you have other animals to show
-    - I want to see another picture
-- intent: other_pets
+    - j ai besoin d'un rappel de math!
+    - c'est quoi une matrice de transformation ?
+    - Par quoi est représente un robot?
+    - explication géométrique robot
+
+- intent: ask_units
   examples: |
-    - I would like to see a [puppy](pet)
-    - Do you have any pictures of [butterflies](pet)
-    - I want to see a [koala](pet)
-- lookup: animal
+    - quels unité sont utilisés?
+    - on parle en degrés ou en radians ?
+    - quelle unité pour la vitesse ?
+
+- intent: ask_kinematics
   examples: |
-    - puppy
-    - butterflies
-    - koala
-    - cat
-    - dog
-    - hamster
-    - lion
-    - penguin
+    - Explqiue moi les vitesses/position/acceleration
+    - c'est quoi la cinématique ?
+    - lien entre position et vitesse robot
+
+- intent: ask_example_usage
+  examples: |
+    - Donne moi un exemple d'utilisation du robot
+    - a quoi ça sert un bras robot ?
+    - application industrielle robot
+
+- intent: ask_clarification
+  examples: |
+    - Je n 'ai pas compris
+    - peux tu reformuler ?
+    - c'est pas clair

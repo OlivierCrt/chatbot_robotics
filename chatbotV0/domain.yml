@@ -1,54 +1,70 @@
-version: '2.0'
-config:
-  store_entities_as_slots: true
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
-intents:
-- greet:
-    use_entities: true
-- goodbye:
-    use_entities: true
-- affirm:
-    use_entities: true
-- deny:
-    use_entities: true
-- mood_great:
-    use_entities: true
-- mood_unhappy:
-    use_entities: true
-- bot_challenge:
-    use_entities: true
-- thank_you:
-    use_entities: true
-- other_picture:
-    use_entities: true
-entities: 
-  - pet
-slots: 
+version: "3.1"
 
-responses:
-  utter_greet:
-  - text: Hey! How are you?
-  utter_cheer_up:
-  - image: https://i.imgur.com/nGF1K8f.jpg
-    text: 'Here is something to cheer you up:'
-  utter_did_that_help:
-  - text: Did that help you?
-  utter_happy:
-  - text: Great, carry on!
-  utter_goodbye:
-  - text: Bye
-  utter_iamabot:
-  - text: I am a bot, powered by Rasa.
-  utter_welcome:
-  - text: You are welcome !
-  - text: You are very welcome !
-  utter_other_picture:
-  - image: https://media.tenor.com/x8v1oNUOmg4AAAAM/rickroll-roll.gif
-    text: Here is another one
-  - text: I don't have any
-actions:
-- action_hello_world
-forms: {}
-e2e_actions: []
+rules:
+
+- rule: Say hello
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Ask robot basics
+  steps:
+  - intent: ask_robot_basics
+  - action: utter_robot_basics
+
+- rule: Ask robot types
+  steps:
+  - intent: ask_robot_types
+  - action: utter_robot_types
+
+- rule: Ask articulation general
+  steps:
+  - intent: ask_articulation_general
+  - action: utter_articulation_general
+
+- rule: Ask articulation specific
+  steps:
+  - intent: ask_articulation_specific
+  - action: utter_articulation_specific
+  # Suggestion visuelle pour comprendre les liaisons
+  # 
+- rule: Ask control
+  steps:
+  - intent: ask_control
+  - action: utter_control
+
+- rule: Ask DOF
+  steps:
+  - intent: ask_dof
+  - action: utter_dof
+  # Suggestion visuelle pour les degrés de liberté
+  # 
+- rule: Ask trajectory
+  steps:
+  - intent: ask_trajectory
+  - action: utter_trajectory
+
+- rule: Ask math representation
+  steps:
+  - intent: ask_math_basics
+  - action: utter_math_basics
+
+- rule: Ask units
+  steps:
+  - intent: ask_units
+  - action: utter_units
+
+- rule: Ask kinematics
+  steps:
+  - intent: ask_kinematics
+  - action: utter_kinematics
+
+- rule: Ask example
+  steps:
+  - intent: ask_example_usage
+  - action: utter_example_usage
+  # 
+- rule: Ask clarification
+  steps:
+  - intent: ask_clarification
+  - action: utter_clarification
