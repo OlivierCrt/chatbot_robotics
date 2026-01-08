@@ -47,8 +47,7 @@ print("\nJacobienne geométrique:")
 print(np.array2string(J_geo, formatter={'float_kind': lambda x: f"{x:7.1f}"}))
 # Calcule de Jacobienne analytique
 # Matrices sous forme analytique
-Mats = Mat_T_analytiques()
-Jacob_an = Jacob_analytique(Mats)
+Jacob_an = Jacob_analytique()
 print("\nJacobienne analytique:")
 sp.pprint(Jacob_an)
 

@@ -11,10 +11,10 @@ from modele_differentiel import *
 def plot_3d_trajectory(positions, A, B, time):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.plot(positions[:, 0], positions[:, 1], positions[:, 2], label="Trajectoire opérationnelle", color='b')
-    ax.scatter(A[0], A[1], A[2], color='g', label="Point A (Départ)")
-    ax.scatter(B[0], B[1], B[2], color='r', label="Point B (Arrivée)")
-    ax.set_title("Trajectoire 3D")
+    ax.plot(positions[:, 0], positions[:, 1], positions[:, 2], label="Operational trajectory", color='b')
+    ax.scatter(A[0], A[1], A[2], color='g', label="Point A (Start)")
+    ax.scatter(B[0], B[1], B[2], color='r', label="Point B (End)")
+    ax.set_title("3D trajectory")
     ax.set_xlabel("X")
     ax.set_ylabel("Y")
     ax.set_zlabel("Z")
@@ -28,9 +28,9 @@ def plot_lois_de_mouvement(time, s, vitesse, acceleration, t1, t2, t3, t4):
     plt.plot(time, acceleration, label="s''(t)", color='r')
     for t_transition, label in zip([t1, t2, t3, t4], ['t1', 't2', 't3', 't4']):
         plt.axvline(x=t_transition, color='r', linestyle='--', label=label)
-    plt.title("Lois de mouvement temporel")
-    plt.xlabel("Temps (s)")
-    plt.ylabel("Valeur")
+    plt.title("Temporal motion laws")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Value")
     plt.legend()
     plt.grid()
     plt.show()
@@ -42,9 +42,9 @@ def plot_trajectoires_operationnelles(time, positions, t1, t2, t3, t4):
     plt.plot(time, positions[:, 2], label="z(t)")
     for t_transition, label in zip([t1, t2, t3, t4], ['t1', 't2', 't3', 't4']):
         plt.axvline(x=t_transition, color='r', linestyle='--', label=label)
-    plt.title("Trajectoire opérationnelle")
-    plt.xlabel("Temps (s)")
-    plt.ylabel("Coordonnées")
+    plt.title("Operational trajectory")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Coordinates")
     plt.legend()
     plt.grid()
     plt.show()
@@ -56,9 +56,9 @@ def plot_vitesses_operationnelles(time, xp, yp, zp, t1, t2, t3, t4):
     plt.plot(time, zp, label="z'(t)")
     for t_transition, label in zip([t1, t2, t3, t4], ['t1', 't2', 't3', 't4']):
         plt.axvline(x=t_transition, color='r', linestyle='--', label=label)
-    plt.title("Vitesses opérationnelles")
-    plt.xlabel("Temps (s)")
-    plt.ylabel("Vitesses")
+    plt.title("Operational velocities")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Velocities (mm/s)")
     plt.legend()
     plt.grid()
     plt.show()
@@ -70,9 +70,9 @@ def plot_accelerations_operationnelles(time, xpp, ypp, zpp, t1, t2, t3, t4):
     plt.plot(time, zpp, label="z''(t)")
     for t_transition, label in zip([t1, t2, t3, t4], ['t1', 't2', 't3', 't4']):
         plt.axvline(x=t_transition, color='r', linestyle='--', label=label)
-    plt.title("Accélérations opérationnelles")
-    plt.xlabel("Temps (s)")
-    plt.ylabel("Accélération (mm/s²)")
+    plt.title("Operational accelerations")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Accelerations (mm/s²)")
     plt.legend()
     plt.grid()
     plt.show()
@@ -84,8 +84,8 @@ def plot_profils_articulaires(time, q, t1, t2, t3, t4):
     plt.plot(time, q[:, 2], label="q3(t)")
     for t_transition, label in zip([t1, t2, t3, t4], ['t1', 't2', 't3', 't4']):
         plt.axvline(x=t_transition, color='r', linestyle='--', label=label)
-    plt.title("Trajectoires articulaires")
-    plt.xlabel("Temps (s)")
+    plt.title("Joint trajectories")
+    plt.xlabel("Time (s)")
     plt.ylabel("Angles (°)")
     plt.legend()
     plt.grid()
@@ -104,9 +104,9 @@ def plot_vitesses_articulaires(time, qp, t1, t2, t3, t4):
         )
     for t_transition, label in zip([t1, t2, t3, t4], ['t1', 't2', 't3', 't4']):
         plt.axvline(x=t_transition, color='r', linestyle='--', label=label)
-    plt.title("Vitesses articulaires")
-    plt.xlabel("Temps (s)")
-    plt.ylabel("Vitesses articulaires (rad/s)")
+    plt.title("Joint velocities")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Joint velocities (rad/s)")
     plt.legend()
     plt.grid()
     plt.show()
@@ -248,7 +248,7 @@ def traj(A, B, V1, V2,K, Debug=False):
     ypp = interp_acc_y(time)
     zpp = interp_acc_z(time)
     if Debug:
-        print(f"pos init {positions[0]} pos final {positions[-1]}")
+        print(f"Initial position {positions[0]} Final position {positions[-1]}")
     prev_q = None  # Variable pour stocker la configuration précédente
 
     for i, X in enumerate(positions):
@@ -330,13 +330,13 @@ def est_point_atteignable(point):
 
     # Vérifier les contraintes
     if z < z_min or z > z_max:
-        return False, f"Le point est hors des limites verticales : {z_min} <= z <= {z_max}."
+        return False, f"The point is out of vertical limits : {z_min} <= z <= {z_max}."
     if rayon_xy > rayon_max:
-        return False, f"Le point est hors du rayon maximum atteignable dans le plan XY : r <= {rayon_max}."
+        return False, f"The point is outside the maximum reachable radius in the XY plane : r <= {rayon_max}."
 
     # Vérifier avec MGI
     solutions = mgi(np.array([x, y, z]), Liaisons)
     if not solutions:
-        return False, "Le MGI n'a trouvé aucune solution pour atteindre ce point."
+        return False, "The Inverse Kinematics did not find any solution to reach this point."
 
-    return True, "Le point est atteignable."
+    return True, "The point is reachable."

@@ -4,16 +4,16 @@ import sympy as sp
 
 def calculate_z_and_o(T):
     """
-    Extrae el vector z y la posición o de una matriz de transformación homogénea.
+    Extracts the vector z and the position o from a homogeneous transformation matrix.
     """
-    z = T[:3, 2]  # Tercera columna (vectores z)
-    o = T[:3, 3]  # Cuarta columna (posición)
+    z = T[:3, 2]  # Third column (z vectors)
+    o = T[:3, 3]  # Fourth column (position)
     return z, o
 
 
 def Jacob_geo(matrices, Debug=False):
     if Debug:
-        print("--- Débogage Jacobienne géométrique ---")
+        print("--- Debug Geometric Jacobian ---")
     T_01 = matrices[0]
     T_02 = np.dot(T_01, matrices[1])
     T_03 = np.dot(T_02, matrices[2])
@@ -46,27 +46,26 @@ def Jacob_geo(matrices, Debug=False):
         [z0[2], z1[2], z2[2]],
     ])
     if Debug:
-        print("Jacobienne géométrique (J) :\n", J)
-        print("--- Fin du débogage Jacobienne géométrique ---")
+        print("Geometric Jacobian (J):\n", J)
+        print("--- End of Debug Geometric Jacobian ---")
 
     return J
 
 
 def Jacob_analytique(q=None, Debug=False):
     """
-    Calcule la Jacobienne analytique en mode débogage.
-    - Si `q` est fourni, la Jacobienne est calculée numériquement.
-    - Affiche toujours la Jacobienne symbolique avec les ci et si.
+    Calculates the analytical Jacobian in debug mode.
+    - If `q` is provided, the Jacobian is calculated numerically.
+    - Always displays the symbolic Jacobian with ci and si.
 
-    Paramètres :
-        M (list): Liste des matrices de transformation analytiques.
-        q (list ou None): Liste des valeurs numériques des angles [q1, q2, q3] (en radians).
+    Parameters:
+        q (list or None): List of numerical angle values [q1, q2, q3] (in radians).
 
-    Retour :
-        np.ndarray : Jacobienne calculée numériquement si `q` est fourni.
-        sp.Matrix : Jacobienne symbolique si `q` n'est pas fourni.
+    Returns:
+        np.ndarray: Numerically calculated Jacobian if `q` is provided.
+        sp.Matrix: Symbolic Jacobian if `q` is not provided.
     """
-    # Définition des symboles pour c_i et s_i
+    # Define symbols for c_i and s_i
     c1, s1, c2, s2, c3, s3, c4, s4 = sp.symbols('c1 s1 c2 s2 c3 s3 c4 s4')
 
     T01 = sp.Matrix([
@@ -97,13 +96,13 @@ def Jacob_analytique(q=None, Debug=False):
         [0, 0, 0, 1]
     ])
 
-    # Calcul des matrices cumulées
+    # Compute cumulative matrices
     T_01 = T01
     T_02 = T01 * T12
     T_03 = T_02 * T23
     T_0T = T_03 * T34
 
-    # Calcul des vecteurs z et o
+    # Extract vectors z and o
     z0 = T_01[:3, 2]
     o0 = T_01[:3, 3]
     z1 = T_02[:3, 2]
@@ -112,14 +111,14 @@ def Jacob_analytique(q=None, Debug=False):
     o2 = T_03[:3, 3]
     ot = T_0T[:3, 3]
 
-    # Calcul des termes de la Jacobienne
+    # Compute Jacobian terms
     Jp1 = z0.cross(ot - o0)
     Jp2 = z1.cross(ot - o1)
     Jp2_simp = 735 * c2 * c3 + 825 * c2 - 735 * s2 * s3
     Jp3 = z2.cross(ot - o2)
     Jp3_simp = 735 * (c2 * c3 - s2 * s3)
 
-    # Jacobienne complète
+    # Complete Jacobian
     J = sp.Matrix([
         [Jp1[0], Jp2[0], Jp3[0]],
         [Jp1[1], Jp2[1], Jp3[1]],
@@ -128,9 +127,9 @@ def Jacob_analytique(q=None, Debug=False):
         [z0[1], z1[1], z2[1]],
         [z0[2], z1[2], z2[2]],
     ])
-    if (Debug):
-        # Affichage en mode débogage
-        print("--- Débogage Jacobienne analytique ---")
+    if Debug:
+        # Display in debug mode
+        print("--- Debug Analytical Jacobian ---")
         print("z0 =")
         sp.pprint(sp.Matrix(z0))
         print("o0 =")
@@ -151,14 +150,14 @@ def Jacob_analytique(q=None, Debug=False):
         sp.pprint(sp.Matrix(Jp2))
         print("Jp3 =")
         sp.pprint(sp.Matrix(Jp3))
-        print("Jacobienne analytique (symbolique) :")
+        print("Analytical Jacobian (symbolic):")
         sp.pprint(J)
-        print("--- Fin du débogage Jacobienne analytique ---")
+        print("--- End of Debug Analytical Jacobian ---")
 
-    # Si des valeurs numériques pour q sont fournies, calculer et retourner la Jacobienne numérique
+    # If numerical values for q are provided, calculate and return numerical Jacobian
     if q is not None:
         q = np.radians(q)
-        # Substituer les valeurs numériques de q dans les ci et si
+        # Substitute numerical values of q into ci and si
         subs = {
             c1: np.cos(q[0]), s1: np.sin(q[0]),
             c2: np.cos(q[1]), s2: np.sin(q[1]),
@@ -167,20 +166,21 @@ def Jacob_analytique(q=None, Debug=False):
         J_numeric = np.array(J.subs(subs)).astype(np.float64)
         return J_numeric
 
-    # Si pas de valeurs numériques, retourner la Jacobienne symbolique
+    # If no numerical values, return symbolic Jacobian
     return J
 
 
 def MDD(v, J):
     """
-    Return vitesses OT
-    parametre Vitesses articulaires, J jacobienne
-
+    Returns OT velocities.
+    Parameters: Joint velocities, J Jacobian
     """
     return np.dot(J, v)
 
 
 def MDI(x, J):
-    """return q vitesse
-    param : x vitesse de l OT souhaitée , J jacobienne"""
+    """
+    Returns joint velocities.
+    Parameters: x desired OT velocities, J Jacobian
+    """
     return np.dot(np.linalg.pinv(J), x)
