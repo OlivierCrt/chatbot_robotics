@@ -1,70 +1,59 @@
-version: "2.0"
+version: "2.0"  
+intents:
+  - greet
+  - ask_robot_basics
+  - ask_robot_types
+  - ask_articulation_general
+  - ask_articulation_specific
+  - ask_control
+  - ask_dof
+  - ask_trajectory
+  - ask_math_basics
+  - ask_units
+  - ask_kinematics
+  - ask_example_usage
+  - ask_clarification
 
-rules:
+responses:
+  utter_greet:
+  - text: "Salut ! Je suis ton assistant en robotique."
 
-- rule: Say hello
-  steps:
-  - intent: greet
-  - action: utter_greet
+  utter_robot_basics:
+  - text: "Un robot fonctionne avec des capteurs, un contrôleur et des actionneurs."
 
-- rule: Ask robot basics
-  steps:
-  - intent: ask_robot_basics
-  - action: utter_robot_basics
+  utter_robot_types:
+  - text: "Il y a les robots manipulateurs, mobiles, humanoïdes et les drones."
 
-- rule: Ask robot types
-  steps:
-  - intent: ask_robot_types
-  - action: utter_robot_types
+  utter_articulation_general:
+  - text: "Une articulation relie deux parties du robot et permet le mouvement."
 
-- rule: Ask articulation general
-  steps:
-  - intent: ask_articulation_general
-  - action: utter_articulation_general
+  utter_articulation_specific:
+  - text: "Rotoïde (R) pour tourner, Prismatique (P) pour glisser."
 
-- rule: Ask articulation specific
-  steps:
-  - intent: ask_articulation_specific
-  - action: utter_articulation_specific
-  # Suggestion visuelle pour comprendre les liaisons
-  # 
-- rule: Ask control
-  steps:
-  - intent: ask_control
-  - action: utter_control
+  utter_control:
+  - text: "On utilise des boucles de contrôle (PID) pour corriger les erreurs de position."
 
-- rule: Ask DOF
-  steps:
-  - intent: ask_dof
-  - action: utter_dof
-  # Suggestion visuelle pour les degrés de liberté
-  # 
-- rule: Ask trajectory
-  steps:
-  - intent: ask_trajectory
-  - action: utter_trajectory
+  utter_dof:
+  - text: "Les degrés de liberté (DDL) sont les mouvements indépendants possibles (souvent 6)."
 
-- rule: Ask math representation
-  steps:
-  - intent: ask_math_basics
-  - action: utter_math_basics
+  utter_trajectory:
+  - text: "Une trajectoire est un chemin géométrique associé à une vitesse et une accélération."
 
-- rule: Ask units
-  steps:
-  - intent: ask_units
-  - action: utter_units
+  utter_math_basics:
+  - text: "On utilise des matrices de transformation homogène pour représenter la position et l'orientation."
 
-- rule: Ask kinematics
-  steps:
-  - intent: ask_kinematics
-  - action: utter_kinematics
+  utter_units:
+  - text: "On utilise les mètres, les radians et les Newtons."
 
-- rule: Ask example
-  steps:
-  - intent: ask_example_usage
-  - action: utter_example_usage
-  # 
-- rule: Ask clarification
-  steps:
-  - intent: ask_clarification
-  - action: utter_clarification
+  utter_kinematics:
+  - text: "La cinématique étudie le mouvement (position, vitesse) sans les forces."
+
+  utter_example_usage:
+  - text: "Exemple : un bras industriel qui fait du 'Pick and Place' sur une chaîne de production."
+
+  utter_clarification:
+  - text: "Je n'ai pas compris. Peux-tu reformuler avec des mots simples ?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
