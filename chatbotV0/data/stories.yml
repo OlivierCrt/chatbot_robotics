@@ -1,2 +1,99 @@
 version: "2.0"
+
 stories:
+
+- story: découverte simple
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_robot_basics
+  - action: utter_robot_basics
+  - intent: run_simulation_simple
+  - action: action_run_simulation_simple
+
+- story: apprentissage articulations
+  steps:
+  - intent: ask_articulation_general
+  - action: utter_articulation_general
+  - intent: ask_articulation_specific
+  - action: utter_articulation_specific
+  - intent: ask_dof
+  - action: utter_dof
+
+- story: parcours cinématique
+  steps:
+  - intent: ask_kinematics
+  - action: utter_kinematics
+  - intent: ask_mgd
+  - action: action_calculate_mgd
+  - intent: ask_mgi
+  - action: action_calculate_mgi
+
+- story: simulation rapide
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: run_simulation_simple
+  - action: action_run_simulation_simple
+
+- story: simulation personnalisée
+  steps:
+  - intent: run_simulation_custom
+  - action: utter_ask_coordinates_a
+  - intent: provide_coordinates
+  - action: utter_ask_coordinates_b
+  - intent: provide_coordinates
+  - action: utter_ask_velocities
+  - intent: provide_coordinates
+  - action: action_run_simulation_custom
+
+- story: calcul MGD
+  steps:
+  - intent: ask_mgd
+  - action: utter_ask_angles
+  - intent: provide_angles
+  - action: action_calculate_mgd
+
+- story: calcul MGI
+  steps:
+  - intent: ask_mgi
+  - action: utter_ask_coordinates_a
+  - intent: provide_coordinates
+  - action: action_calculate_mgi
+
+- story: jacobienne
+  steps:
+  - intent: ask_jacobian
+  - action: utter_ask_angles
+  - intent: provide_angles
+  - action: action_calculate_jacobian
+
+- story: aide et retour
+  steps:
+  - intent: ask_clarification
+  - action: utter_clarification
+  - intent: help
+  - action: utter_help
+
+- story: exemple code
+  steps:
+  - intent: ask_code_example
+  - action: action_show_code_example
+
+- story: vérification workspace
+  steps:
+  - intent: ask_workspace
+  - action: utter_ask_coordinates_a
+  - intent: provide_coordinates
+  - action: action_check_workspace
+
+- story: analyse avancée
+  steps:
+  - intent: ask_advanced_analysis
+  - action: utter_ask_coordinates_a
+  - intent: provide_coordinates
+  - action: utter_ask_coordinates_b
+  - intent: provide_coordinates
+  - action: utter_ask_velocities
+  - intent: provide_coordinates
+  - action: action_advanced_analysis
