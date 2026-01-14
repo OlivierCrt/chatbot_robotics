@@ -10,6 +10,7 @@ stories:
   - action: utter_robot_basics
   - intent: ask_robot_types
   - action: utter_robot_types
+  - action: action_illustrer
   - intent: ask_articulation
   - action: utter_articulation
 
@@ -131,4 +132,4 @@ stories:
   - intent: ask_robot_basics
   - action: utter_robot_basics
   - intent: goodbye
-  - action: utter_goodbye
+  - action: action_end_conversation

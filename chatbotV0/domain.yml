@@ -100,9 +100,6 @@ responses:
       
       Par où voulez-vous commencer ? (Tapez 'aide' pour voir toutes les options)
 
-  utter_goodbye:
-  - text: "Au revoir ! N'hésitez pas à revenir pour en apprendre plus sur la robotique. À bientôt ! 👋"
-
   utter_robot_basics:
   - text: |
       Un robot manipulateur fonctionne grâce à 3 composants essentiels :
@@ -367,7 +364,11 @@ responses:
   - text: "D'accord. Autre chose ?"
 
 actions:
-  # Actions personnalisées (implémentées dans actions.py)
+  # Actions basiques
+  - action_end_conversation
+  - action_illustrer
+  
+  # Actions personnalisées (devraient étre connéctées avec Digitwin)
   - action_calculate_mgd
   - action_calculate_mgi
   - action_calculate_jacobian
@@ -381,7 +382,6 @@ actions:
   
   # Réponses simples
   - utter_greet
-  - utter_goodbye
   - utter_robot_basics
   - utter_robot_types
   - utter_articulation

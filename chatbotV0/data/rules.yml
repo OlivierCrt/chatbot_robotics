@@ -10,7 +10,7 @@ rules:
 - rule: Dire au revoir toujours
   steps:
   - intent: goodbye
-  - action: utter_goodbye
+  - action: action_end_conversation
 
 - rule: Répondre à une aide
   steps:
@@ -26,6 +26,7 @@ rules:
   steps:
   - intent: ask_robot_types
   - action: utter_robot_types
+  - action: action_illustrer
 
 - rule: Articulations
   steps:
