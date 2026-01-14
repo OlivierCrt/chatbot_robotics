@@ -101,7 +101,7 @@ responses:
       Par où voulez-vous commencer ? (Tapez 'aide' pour voir toutes les options)
 
   utter_goodbye:
-  - text: "Au revoir ! N'hésitez pas à revenir pour en apprendre plus sur la robotique. À bientôt ! 👋"
+  - text: "Au revoir ! N'hésitez pas à revenir pour en apprendre plus sur la robotique. À bientôt !"
 
   utter_robot_basics:
   - text: |
