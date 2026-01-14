@@ -304,7 +304,7 @@ if (SpeechRecognition) {
       setUserText(merged.trim());
       status.textContent = "OK";
       // option : auto-submit après dictée
-      submit ();
+      submit();
     }
   };
 
