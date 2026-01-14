@@ -10,15 +10,19 @@ stories:
   - action: utter_robot_basics
   - intent: ask_robot_types
   - action: utter_robot_types
+  - action: action_illustrer
   - intent: ask_articulation
   - action: utter_articulation
+  - action: action_illustrer
 
 - story: Apprentissage articulations et DDL
   steps:
   - intent: ask_articulation
   - action: utter_articulation
+  - action: action_illustrer
   - intent: ask_dof
   - action: utter_dof
+  - action: action_illustrer
   - intent: affirm
   - action: utter_affirm
 
@@ -131,4 +135,4 @@ stories:
   - intent: ask_robot_basics
   - action: utter_robot_basics
   - intent: goodbye
-  - action: utter_goodbye
+  - action: action_end_conversation

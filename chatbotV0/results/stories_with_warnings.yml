@@ -1,1 +1,12 @@
-# No warnings for test stories
+version: "2.0"
+stories:
+- story: test complexe 22 - Tunnel cinématique profond (./tests/test_stories.yml)
+  steps:
+  - intent: ask_kinematics
+  - action: utter_kinematics
+  - intent: calculate_mgd
+  - action: action_calculate_mgd
+  - intent: calculate_jacobian
+  - action: action_calculate_jacobian  # predicted: action_unlikely_intent
+  - intent: ask_kinematics
+  - action: utter_kinematics

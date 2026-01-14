@@ -2,117 +2,331 @@ version: "2.0"
 
 stories:
 
-- story: test path 1 - découverte simple
+# --- TESTS DE BASE ET FONCTIONNELS (1-20) ---
+
+- story: test path 1 - Accueil et aide
   steps:
+  - user: |
+      Bonjour
+    intent: greet
+  - action: utter_greet
+  - user: |
+      Aide moi
+    intent: ask_help
+  - action: utter_ask_help
+
+- story: test path 2 - Découverte types et illustration
+  steps:
+  - user: |
+      Quels sont les types de robots ?
+    intent: ask_robot_types
+  - action: utter_robot_types
+  - action: action_illustrer
+
+- story: test path 3 - Bases et articulations
+  steps:
+  - user: |
+      C'est quoi le principe d'un robot ?
+    intent: ask_robot_basics
+  - action: utter_robot_basics
+  - user: |
+      C'est quoi une articulation ?
+    intent: ask_articulation
+  - action: utter_articulation
+  - action: action_illustrer
+
+- story: test path 4 - Degrés de liberté
+  steps:
+  - user: |
+      C'est quoi les degrés de liberté ?
+    intent: ask_dof
+  - action: utter_dof
+  - action: action_illustrer
+
+- story: test path 5 - Concepts Cinématiques
+  steps:
+  - user: |
+      Explique moi la cinématique
+    intent: ask_kinematics
+  - action: utter_kinematics
+
+- story: test path 6 - Calcul MGD
+  steps:
+  - user: |
+      Calcule le MGD
+    intent: calculate_mgd
+  - action: action_calculate_mgd
+
+- story: test path 7 - Calcul MGI
+  steps:
+  - user: |
+      Calcule le MGI
+    intent: calculate_mgi
+  - action: action_calculate_mgi
+
+- story: test path 8 - Jacobienne
+  steps:
+  - user: |
+      Matrice jacobienne
+    intent: calculate_jacobian
+  - action: action_calculate_jacobian
+
+- story: test path 9 - Planification de mouvement
+  steps:
+  - user: |
+      C'est quoi une trajectoire ?
+    intent: ask_trajectory
+  - action: utter_trajectory
+  - user: |
+      Génère une trajectoire
+    intent: calculate_trajectory
+  - action: action_generate_trajectory
+
+- story: test path 10 - Espace de travail
+  steps:
+  - user: |
+      C'est quoi l'espace de travail ?
+    intent: ask_workspace
+  - action: utter_workspace_info
+
+- story: test path 11 - Contrôle et Asservissement
+  steps:
+  - user: |
+      Comment contrôler le robot ?
+    intent: ask_control
+  - action: utter_control
+
+- story: test path 12 - Capteurs et Perception
+  steps:
+  - user: |
+      Quels capteurs utilise un robot ?
+    intent: ask_sensors
+  - action: utter_sensors
+
+- story: test path 13 - Applications industrielles
+  steps:
+  - user: |
+      À quoi ça sert un bras robot ?
+    intent: ask_applications
+  - action: utter_applications
+
+- story: test path 14 - Demande de code Python
+  steps:
+  - user: |
+      Montre moi le code
+    intent: ask_code_example
+  - action: action_show_code_example
+
+- story: test path 15 - Configuration matérielle
+  steps:
+  - user: |
+      Affiche la config
+    intent: show_robot_config
+  - action: action_show_robot_config
+
+- story: test path 16 - Bilan et Quiz
+  steps:
+  - user: |
+      Qu'ai-je appris ?
+    intent: ask_what_learned
+  - action: action_show_learning_summary
+  - user: |
+      Fais moi un quiz
+    intent: ask_quiz
+  - action: action_quiz_user
+
+- story: test path 17 - Négation et Reset
+  steps:
+  - user: |
+      Non
+    intent: deny
+  - action: utter_deny
+  - user: |
+      Reset
+    intent: reset_conversation
+  - action: action_reset_slots
+
+- story: test path 18 - Affirmation simple
+  steps:
+  - user: |
+      Oui
+    intent: affirm
+  - action: utter_affirm
+
+- story: test path 19 - Enchaînement Cinématique
+  steps:
+  - user: |
+      MGD MGI
+    intent: ask_kinematics
+  - action: utter_kinematics
+  - user: |
+      Calcule la jacobienne
+    intent: calculate_jacobian
+  - action: action_calculate_jacobian
+
+- story: test path 20 - Fin de session
+  steps:
+  - user: |
+      Au revoir
+    intent: goodbye
+  - action: action_end_conversation
+
+# --- TESTS COMPLEXES (21-30) ---
+
+- story: test complexe 21 - Du concept à l'application
+  steps:
+  - user: |
+      C'est quoi un robot
+    intent: ask_robot_basics
+  - action: utter_robot_basics
+  - user: |
+      Quels sont les différents types de robots
+    intent: ask_robot_types
+  - action: utter_robot_types
+  - action: action_illustrer
+  - user: |
+      À quoi ça sert un bras robot ?
+    intent: ask_applications
+  - action: utter_applications
+
+- story: test complexe 22 - Tunnel cinématique profond
+  steps:
+  - user: |
+      Explique moi la cinématique
+    intent: ask_kinematics
+  - action: utter_kinematics
+  - user: |
+      Calcule le MGD
+    intent: calculate_mgd
+  - action: action_calculate_mgd
+  - user: |
+      Calcule la jacobienne
+    intent: calculate_jacobian
+  - action: action_calculate_jacobian
+  - user: |
+      C'est quoi la cinématique ?
+    intent: ask_kinematics
+  - action: utter_kinematics
+
+- story: test complexe 23 - Mobilité et accessibilité
+  steps:
+  - user: |
+      C'est quoi les DDL
+    intent: ask_dof
+  - action: utter_dof
+  - action: action_illustrer
+  - user: |
+      Espace de travail
+    intent: ask_workspace
+  - action: utter_workspace_info
+  - user: |
+      angles pour atteindre position
+    intent: calculate_mgi
+  - action: action_check_workspace
+
+- story: test complexe 24 - Mécanique articulaire détaillée
+  steps:
+  - user: |
+      Types d'articulations
+    intent: ask_articulation
+  - action: utter_articulation
+  - action: action_illustrer
+  - user: |
+      C'est quoi les degrés de liberté
+    intent: ask_dof
+  - action: utter_dof
+  - action: action_illustrer
+  - user: |
+      Oui
+    intent: affirm
+  - action: utter_affirm
+
+- story: test complexe 25 - Contrôle et Capteurs
+  steps:
+  - user: |
+      Comment on pilote un robot
+    intent: ask_control
+  - action: utter_control
+  - user: |
+      Types de capteurs
+    intent: ask_sensors
+  - action: utter_sensors
+  - user: |
+      Donne moi un exemple d'utilisation
+    intent: ask_applications
+  - action: utter_applications
+
+- story: test complexe 26 - Trajectoire et vérification de code
+  steps:
+  - user: |
+      C'est quoi une trajectoire
+    intent: ask_trajectory
+  - action: utter_trajectory
+  - user: |
+      Planifie mouvement
+    intent: calculate_trajectory
+  - action: action_generate_trajectory
+  - user: |
+      Montre moi le code
+    intent: ask_code_example
+  - action: action_show_code_example
+  - user: |
+      Bien sûr
+    intent: affirm
+  - action: utter_affirm
+
+- story: test complexe 27 - Évaluation finale
+  steps:
+  - user: |
+      Qu'ai-je appris
+    intent: ask_what_learned
+  - action: action_show_learning_summary
+  - user: |
+      Évalue mes connaissances
+    intent: ask_quiz
+  - action: action_quiz_user
+
+- story: test complexe 28 - Gestion des erreurs et aide
+  steps:
+  - user: |
+      [Message inconnu]
+    intent: nlu_fallback
+  - action: utter_default
+  - user: |
+      Aide
+    intent: ask_help
+  - action: utter_ask_help
+  - user: |
+      Architecture robot
+    intent: ask_robot_basics
+  - action: utter_robot_basics
+
+- story: test complexe 29 - Paramétrage et Reset complet
+  steps:
+  - user: |
+      Config robot
+    intent: show_robot_config
+  - action: action_show_robot_config
+  - user: |
+      Réinitialise
+    intent: reset_conversation
+  - action: action_reset_slots
   - user: |
       Salut
     intent: greet
   - action: utter_greet
-  - user: |
-      comment marche un robot
-    intent: ask_robot_basics
-  - action: utter_robot_basics
-  - user: |
-      montre moi une simulation
-    intent: run_simulation_simple
-  - action: utter_simulation_launched
 
-- story: test path 2 - apprentissage articulations
+- story: test complexe 30 - Cycle cinématique inverse
   steps:
   - user: |
-      C est quoi une articulation?
-    intent: ask_articulation_general
-  - action: utter_articulation_general
-  - user: |
-      c'est quoi un pivot ?
-    intent: ask_articulation_specific
-  - action: utter_articulation_specific
-  - user: |
-      C est quoi les degres de liberte?
-    intent: ask_dof
-  - action: utter_dof
-
-- story: test path 3 - parcours cinématique
-  steps:
-  - user: |
-      c'est quoi la cinematique ?
+      MGD MGI
     intent: ask_kinematics
   - action: utter_kinematics
   - user: |
-      calcule le MGD
-    intent: ask_mgd
-  - action: utter_mgd_example
+      Calcule le MGI
+    intent: calculate_mgi
+  - action: action_calculate_mgi
   - user: |
-      calcule le MGI
-    intent: ask_mgi
-  - action: utter_mgi_example
-
-- story: test path 4 - simulation personnalisée
-  steps:
-  - user: |
-      je veux personnaliser la simulation
-    intent: run_simulation_custom
-  - action: utter_simulation_launched
-
-- story: test path 5 - calcul MGD interactif
-  steps:
-  - user: |
-      modele geometrique direct
-    intent: ask_mgd
-  - action: utter_ask_angles
-  - user: |
-      45 30 -15
-    intent: provide_angles
-  - action: utter_mgd_example
-
-- story: test path 6 - calcul MGI interactif
-  steps:
-  - user: |
-      modele geometrique inverse
-    intent: ask_mgi
-  - action: utter_ask_coordinates_a
-  - user: |
-      500 200 100
-    intent: provide_coordinates
-  - action: utter_mgi_example
-
-- story: test path 7 - aide et clarification
-  steps:
-  - user: |
-      peux tu reformuler ?
-    intent: ask_clarification
-  - action: utter_clarification
-  - user: |
-      help
-    intent: help
-  - action: utter_help
-
-- story: test path 8 - vérification workspace
-  steps:
-  - user: |
-      espace de travail
-    intent: ask_workspace
-  - action: utter_ask_coordinates_a
-  - user: |
-      0 500 600
-    intent: provide_coordinates
-  - action: utter_workspace_example
-
-- story: test path 9 - analyse avancée
-  steps:
-  - user: |
-      analyse complete
-    intent: ask_advanced_analysis
-  - action: utter_ask_coordinates_a
-  - user: |
-      100 100 100
-    intent: provide_coordinates
-  - action: utter_ask_coordinates_b
-  - user: |
-      200 200 200
-    intent: provide_coordinates
-  - action: utter_ask_velocities
-  - user: |
-      10 10 5
-    intent: provide_coordinates
-  - action: utter_advanced_analysis_example
+      Parfait
+    intent: affirm
+  - action: utter_affirm

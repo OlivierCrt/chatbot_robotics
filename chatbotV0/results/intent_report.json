@@ -1,66 +1,192 @@
 {
-  "deny": {
+  "ask_robot_basics": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 7,
+    "support": 14,
     "confused_with": {}
   },
-  "bot_challenge": {
+  "ask_robot_types": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 4,
+    "support": 10,
+    "confused_with": {}
+  },
+  "ask_articulation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 15,
+    "confused_with": {}
+  },
+  "ask_dof": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
     "confused_with": {}
   },
   "goodbye": {
-    "precision": 0.9166666666666666,
+    "precision": 0.9090909090909091,
     "recall": 1.0,
-    "f1-score": 0.9565217391304348,
-    "support": 11,
+    "f1-score": 0.9523809523809523,
+    "support": 10,
     "confused_with": {}
   },
-  "greet": {
+  "calculate_mgi": {
     "precision": 1.0,
-    "recall": 0.9285714285714286,
-    "f1-score": 0.962962962962963,
-    "support": 14,
+    "recall": 0.8,
+    "f1-score": 0.888888888888889,
+    "support": 10,
     "confused_with": {
-      "goodbye": 1
+      "calculate_mgd": 1,
+      "ask_kinematics": 1
     }
   },
   "affirm": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 6,
+    "support": 10,
     "confused_with": {}
   },
-  "mood_great": {
+  "ask_workspace": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 14,
+    "support": 12,
     "confused_with": {}
   },
-  "mood_unhappy": {
+  "show_robot_config": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 14,
+    "support": 10,
     "confused_with": {}
   },
-  "accuracy": 0.9857142857142858,
+  "reset_conversation": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "ask_code_example": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 12,
+    "confused_with": {}
+  },
+  "calculate_jacobian": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9,
+    "confused_with": {}
+  },
+  "ask_kinematics": {
+    "precision": 0.9,
+    "recall": 0.9,
+    "f1-score": 0.9,
+    "support": 10,
+    "confused_with": {
+      "calculate_mgd": 1
+    }
+  },
+  "ask_help": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 12,
+    "confused_with": {}
+  },
+  "calculate_trajectory": {
+    "precision": 1.0,
+    "recall": 0.9,
+    "f1-score": 0.9473684210526316,
+    "support": 10,
+    "confused_with": {
+      "ask_trajectory": 1
+    }
+  },
+  "ask_applications": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "ask_what_learned": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "ask_sensors": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "calculate_mgd": {
+    "precision": 0.8461538461538461,
+    "recall": 1.0,
+    "f1-score": 0.9166666666666666,
+    "support": 11,
+    "confused_with": {}
+  },
+  "greet": {
+    "precision": 1.0,
+    "recall": 0.9,
+    "f1-score": 0.9473684210526316,
+    "support": 10,
+    "confused_with": {
+      "goodbye": 1
+    }
+  },
+  "deny": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "ask_quiz": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10,
+    "confused_with": {}
+  },
+  "ask_control": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 12,
+    "confused_with": {}
+  },
+  "ask_trajectory": {
+    "precision": 0.9090909090909091,
+    "recall": 1.0,
+    "f1-score": 0.9523809523809523,
+    "support": 10,
+    "confused_with": {}
+  },
+  "accuracy": 0.980544747081712,
   "macro avg": {
-    "precision": 0.988095238095238,
-    "recall": 0.9897959183673469,
-    "f1-score": 0.988497814584771,
-    "support": 70
+    "precision": 0.9818473193473194,
+    "recall": 0.9791666666666666,
+    "f1-score": 0.9793772626009468,
+    "support": 257
   },
   "weighted avg": {
-    "precision": 0.9869047619047618,
-    "recall": 0.9857142857142858,
-    "f1-score": 0.9857602944559466,
-    "support": 70
+    "precision": 0.9824494571576284,
+    "recall": 0.980544747081712,
+    "f1-score": 0.9804171583303264,
+    "support": 257
   }
 }
