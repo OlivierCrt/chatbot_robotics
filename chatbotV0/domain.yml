@@ -90,7 +90,7 @@ slots:
 responses:
   utter_greet:
   - text: |
-      Bonjour ! Je suis RoboTeach, votre assistant pour apprendre la robotique. 🤖
+      Bonjour ! Je suis RoboTeach, votre assistant pour apprendre la robotique.
       
       Je peux vous aider à :
       • Comprendre les concepts de base de la robotique
@@ -104,17 +104,17 @@ responses:
   - text: |
       Un robot manipulateur fonctionne grâce à 3 composants essentiels :
       
-      1️⃣ **Capteurs** - Les "sens" du robot
+      1) Capteurs - Les "sens" du robot
          → Encodeurs (position des moteurs)
          → Capteurs de force/couple
          → Caméras de vision
       
-      2️⃣ **Contrôleur** - Le "cerveau"
+      2) Contrôleur - Le "cerveau"
          → Ordinateur embarqué
          → Calcule les commandes en temps réel
          → Gère la sécurité
       
-      3️⃣ **Actionneurs** - Les "muscles"
+      3) Actionneurs - Les "muscles"
          → Moteurs électriques (servomoteurs)
          → Vérins pneumatiques/hydrauliques
          → Exécutent les mouvements
@@ -125,22 +125,22 @@ responses:
   - text: |
       Voici les principaux types de robots :
       
-      🦾 **Manipulateurs** (comme notre modèle)
+      Manipulateurs (comme notre modèle)
          → Bras articulés industriels
          → 3 à 7 degrés de liberté
          → Usage : assemblage, soudure, peinture
       
-      🚗 **Mobiles**
+      Mobiles
          → Robots à roues ou chenilles
          → Drones aériens
          → Usage : livraison, exploration
       
-      🤖 **Humanoïdes**
+      Humanoïdes
          → Forme humaine
          → Interaction sociale
          → Recherche avancée
       
-      🏭 **Collaboratifs (cobots)**
+      Collaboratifs (cobots)
          → Travaillent avec les humains
          → Sécurité renforcée
          → Usage : industrie 4.0
@@ -151,41 +151,41 @@ responses:
   - text: |
       Les articulations (ou liaisons) connectent les segments du robot.
       
-      🔄 **Liaison Rotoïde (R)** - Rotation
+      Liaison Rotoïde (R) - Rotation
          → Tourne autour d'un axe fixe
          → Paramètre : angle θ (theta)
          → Exemple : coude, pivot
          → 1 degré de liberté
       
-      ↔️ **Liaison Prismatique (P)** - Translation
+      Liaison Prismatique (P) - Translation
          → Glisse le long d'un axe
          → Paramètre : distance d
          → Exemple : vérin, ascenseur
          → 1 degré de liberté
       
       Notre robot 3R possède :
-      • **q1** : rotation de la base (axe vertical)
-      • **q2** : rotation de l'épaule
-      • **q3** : rotation du coude
+      • q1 : rotation de la base (axe vertical)
+      • q2 : rotation de l'épaule
+      • q3 : rotation du coude
       
       Chaque articulation = 1 moteur = 1 angle à contrôler !
 
   utter_dof:
   - text: |
-      Les **Degrés De Liberté (DDL)** sont les mouvements indépendants possibles.
+      Les Degrés De Liberté (DDL) sont les mouvements indépendants possibles.
       
-      📐 Dans l'espace 3D :
+      Dans l'espace 3D :
       • Un objet libre possède 6 DDL
         - 3 translations (X, Y, Z)
         - 3 rotations (roulis, tangage, lacet)
       
-      🤖 Notre robot 3R :
+      Notre robot 3R :
       • 3 DDL (3 articulations rotoïdes)
       • q1, q2, q3 sont les variables articulaires
       • Peut atteindre des positions (x, y, z)
       • Mais ne peut pas contrôler l'orientation complète
       
-      ⚠️ Règle importante :
+      Règle importante :
       Pour atteindre n'importe quelle position ET orientation dans l'espace (6 DDL), il faut au minimum 6 articulations !
       
       Voulez-vous voir un calcul de position avec les angles actuels ?
@@ -194,31 +194,31 @@ responses:
   - text: |
       Le contrôle d'un robot utilise une **boucle d'asservissement** :
       
-      📊 Schéma de contrôle :
+      Schéma de contrôle :
       Consigne → [+] → Correcteur → Actionneur → Système
                   ↑ -                              ↓
                   └────── Capteur ←─────────────────┘
       
-      1. **Consigne** : position/vitesse désirée
-      2. **Erreur** : différence (consigne - mesure)
-      3. **Correcteur PID** :
+      1. Consigne : position/vitesse désirée
+      2. Erreur : différence (consigne - mesure)
+      3. Correcteur PID :
          • P (Proportionnel) : réagit à l'erreur actuelle
          • I (Intégral) : corrige l'erreur accumulée
          • D (Dérivé) : anticipe l'erreur future
-      4. **Actionneur** : applique la commande au moteur
-      5. **Capteur** : mesure la position réelle
+      4. Actionneur : applique la commande au moteur
+      5. Capteur : mesure la position réelle
       
       Le correcteur PID est l'algorithme le plus utilisé en robotique industrielle !
 
   utter_trajectory:
   - text: |
-      Une **trajectoire** définit le chemin complet du robot dans le temps.
+      Une trajectoire définit le chemin complet du robot dans le temps.
       
-      📈 Composantes d'une trajectoire :
-      • **Chemin** : suite de points (A → B → C...)
-      • **Loi de mouvement** : vitesse à chaque instant
+      Composantes d'une trajectoire :
+      • Chemin : suite de points (A → B → C...)
+      • Loi de mouvement : vitesse à chaque instant
       
-      🎯 Profil de vitesse trapézoïdal (le plus courant) :
+      Profil de vitesse trapézoïdal (le plus courant) :
       
       Vitesse
         ↑     ┌─────────┐
@@ -229,28 +229,28 @@ responses:
           Accél  Cst  Décél
       
       Phases :
-      1. **Accélération** : démarrage progressif
-      2. **Vitesse constante** : déplacement rapide
-      3. **Décélération** : arrêt en douceur
+      1. Accélération : démarrage progressif
+      2. Vitesse constante : déplacement rapide
+      3. Décélération : arrêt en douceur
       
       Je peux calculer une trajectoire entre 2 points si vous voulez !
 
   utter_kinematics:
   - text: |
-      La **cinématique** étudie le mouvement sans considérer les forces.
+      La cinématique étudie le mouvement sans considérer les forces.
       
-      🎯 Trois outils essentiels :
+      Trois outils essentiels :
       
-      **1. MGD** (Modèle Géométrique Direct)
+      1. MGD (Modèle Géométrique Direct)
          Angles (q1, q2, q3) → Position (x, y, z)
          Question : "Où est l'effecteur ?"
       
-      **2. MGI** (Modèle Géométrique Inverse)
+      2. MGI (Modèle Géométrique Inverse)
          Position (x, y, z) → Angles (q1, q2, q3)
          Question : "Quels angles pour atteindre ce point ?"
-         ⚠️ Peut avoir plusieurs solutions ou aucune !
+         Peut avoir plusieurs solutions ou aucune !
       
-      **3. Jacobienne (J)**
+      3. Jacobienne (J)
          Vitesses articulaires ⟷ Vitesses opérationnelles
          dX = J × dq
          Permet de détecter les singularités
@@ -259,14 +259,14 @@ responses:
 
   utter_sensors:
   - text: |
-      Les **capteurs** donnent au robot la perception de son environnement.
+      Les capteurs donnent au robot la perception de son environnement.
       
-      🔧 **Capteurs proprioceptifs** (état interne) :
+      Capteurs proprioceptifs (état interne) :
       • Encodeurs rotatifs : mesurent les angles articulaires
       • Capteurs de couple : mesurent les forces dans les moteurs
       • Accéléromètres : détectent les vibrations
       
-      👁️ **Capteurs extéroceptifs** (environnement) :
+      Capteurs extéroceptifs (environnement) :
       • Caméras : vision 2D/3D
       • Capteurs laser (LIDAR) : mesure de distance
       • Capteurs de force/pression : détection de contact
@@ -278,16 +278,16 @@ responses:
   - text: |
       Les bras robots sont omniprésents dans l'industrie moderne :
       
-      🏭 **Applications industrielles** :
+      Applications industrielles :
       
-      • **Pick & Place** : tri de pièces à haute cadence
-      • **Soudure** : assemblage automobile, précision ±0.1mm
-      • **Peinture** : application uniforme, économie de matière
-      • **Assemblage** : montage électronique, vissage
-      • **Palettisation** : empilement de cartons
-      • **Usinage** : découpe, perçage
+      • Pick & Place : tri de pièces à haute cadence
+      • Soudure : assemblage automobile, précision ±0.1mm
+      • Peinture : application uniforme, économie de matière
+      • Assemblage : montage électronique, vissage
+      • Palettisation : empilement de cartons
+      • Usinage : découpe, perçage
       
-      🔬 **Autres domaines** :
+      Autres domaines :
       • Chirurgie assistée (robot Da Vinci)
       • Laboratoires (manipulation d'échantillons)
       • Agroalimentaire (emballage)
@@ -297,7 +297,7 @@ responses:
 
   utter_workspace_info:
   - text: |
-      L'**espace de travail** (workspace) est l'ensemble des points atteignables par le robot.
+      L'espace de travail (workspace) est l'ensemble des points atteignables par le robot.
       
       Pour un robot 3R comme le nôtre :
       • Forme : volume de révolution (quasi-sphérique)
@@ -313,9 +313,9 @@ responses:
 
   utter_ask_help:
   - text: |
-      🤖 **Aide - Commandes disponibles** :
+      Aide - Commandes disponibles :
       
-      **📚 Apprentissage** :
+      Apprentissage :
       • "c'est quoi un robot" - Bases de la robotique
       • "types de robots" - Catégories de robots
       • "articulations" - Liaisons rotoïdes/prismatiques
@@ -325,18 +325,18 @@ responses:
       • "capteurs" - Types de capteurs
       • "applications" - Usages industriels
       
-      **🧮 Calculs** :
+      Calculs :
       • "calcule MGD" - Position depuis angles
       • "calcule MGI" - Angles pour atteindre une position
       • "calcule jacobienne" - Matrice jacobienne
       • "génère trajectoire" - Trajectoire entre 2 points
       • "vérifie workspace" - Point atteignable ?
       
-      **💻 Code** :
+      Code :
       • "montre le code" - Exemples Python
       • "config robot" - Paramètres actuels
       
-      **📊 Progression** :
+      Progression :
       • "qu'ai-je appris" - Résumé de vos apprentissages
       • "quiz" - Tester vos connaissances
       • "reset" - Recommencer
