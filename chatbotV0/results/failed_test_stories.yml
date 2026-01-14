@@ -1,1 +1,24 @@
-# None of the test stories failed - all good!
+version: "2.0"
+stories:
+- story: test path 16 - Bilan et Quiz (./tests/test_stories.yml)
+  steps:
+  - intent: ask_what_learned
+  - action: action_show_learning_summary
+  - intent: ask_quiz  # predicted: ask_help: Fais moi un quiz
+  - action: action_quiz_user
+- story: test complexe 28 - Gestion des erreurs et aide (./tests/test_stories.yml)
+  steps:
+  - intent: nlu_fallback
+  - action: utter_default  # predicted: action_default_fallback
+  - intent: ask_help
+  - action: utter_ask_help
+  - intent: ask_robot_basics
+  - action: utter_robot_basics
+- story: test complexe 29 - Paramétrage et Reset complet (./tests/test_stories.yml)
+  steps:
+  - intent: show_robot_config
+  - action: action_show_robot_config
+  - intent: reset_conversation
+  - action: action_reset_slots
+  - intent: greet  # predicted: nlu_fallback: Salut
+  - action: utter_greet

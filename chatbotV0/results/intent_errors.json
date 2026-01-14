@@ -1,10 +1,42 @@
 [
   {
-    "text": "good afternoon",
+    "text": "Salut",
     "intent": "greet",
     "intent_prediction": {
       "name": "goodbye",
-      "confidence": 0.6669669151306152
+      "confidence": 0.48747578263282776
+    }
+  },
+  {
+    "text": "Cinématique directe",
+    "intent": "ask_kinematics",
+    "intent_prediction": {
+      "name": "calculate_mgd",
+      "confidence": 0.7898247838020325
+    }
+  },
+  {
+    "text": "Position vers angles",
+    "intent": "calculate_mgi",
+    "intent_prediction": {
+      "name": "calculate_mgd",
+      "confidence": 0.9578641653060913
+    }
+  },
+  {
+    "text": "Cinématique inverse",
+    "intent": "calculate_mgi",
+    "intent_prediction": {
+      "name": "ask_kinematics",
+      "confidence": 0.5288392901420593
+    }
+  },
+  {
+    "text": "Profil de vitesse",
+    "intent": "calculate_trajectory",
+    "intent_prediction": {
+      "name": "ask_trajectory",
+      "confidence": 0.6034669280052185
     }
   }
 ]

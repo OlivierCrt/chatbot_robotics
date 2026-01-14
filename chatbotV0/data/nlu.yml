@@ -189,7 +189,6 @@ nlu:
     - Où est l'effecteur
     - Calculer position finale
     - Angles vers position
-    - MGD pour q1 [angle_value](angle_value) q2 [angle_value](angle_value) q3 [angle_value](angle_value)
     - Calcule position
     - Cinématique directe
     - Forward kinematics
@@ -204,7 +203,6 @@ nlu:
     - Comment atteindre ce point
     - Position vers angles
     - Configuration nécessaire
-    - MGI pour x [position_value](position_value) y [position_value](position_value) z [position_value](position_value)
     - Cinématique inverse
     - Inverse kinematics
     - Quels angles pour atteindre
@@ -218,7 +216,6 @@ nlu:
     - Modèle différentiel
     - Vitesses articulaires
     - Vitesses opérationnelles
-    - Jacobienne pour q1 [angle_value](angle_value) q2 [angle_value](angle_value) q3 [angle_value](angle_value)
     - Matrice J
     - Singularités
     - Calcul jacobien
@@ -265,22 +262,6 @@ nlu:
     - Code MGD
     - Code MGI
     - Code jacobienne
-
-- intent: provide_joint_angles
-  examples: |
-    - q1 [angle_value](30) q2 [angle_value](45) q3 [angle_value](-20)
-    - [angle_value](0) [angle_value](90) [angle_value](0)
-    - Les angles sont [angle_value](30) [angle_value](60) [angle_value](90)
-    - 45 30 -15
-    - theta1 30 theta2 45 theta3 60
-
-- intent: provide_position
-  examples: |
-    - x [position_value](500) y [position_value](0) z [position_value](600)
-    - [position_value](400) [position_value](200) [position_value](500)
-    - La position est [position_value](300) [position_value](300) [position_value](400)
-    - 500 0 600
-    - position 400 200 300
 
 - intent: show_robot_config
   examples: |
