@@ -2,255 +2,400 @@ version: "2.0"
 
 intents:
   - greet
-  - ask_robot_basics
-  - ask_robot_types
-  - ask_articulation_general
-  - ask_articulation_specific
-  - ask_control
-  - ask_dof
-  - ask_trajectory
-  - ask_math_basics
-  - ask_units
-  - ask_kinematics
-  - ask_example_usage
-  - ask_clarification
-  - run_simulation_simple
-  - run_simulation_custom
-  - ask_mgd
-  - ask_mgi
-  - ask_jacobian
-  - ask_code_example
-  - ask_advanced_analysis
-  - ask_workspace
-  - help
+  - goodbye
   - affirm
   - deny
-  - provide_coordinates
-  - provide_angles
+  - ask_robot_basics
+  - ask_robot_types
+  - ask_articulation
+  - ask_dof
+  - ask_control
+  - ask_trajectory
+  - ask_kinematics
+  - ask_sensors
+  - ask_applications
+  - calculate_mgd
+  - calculate_mgi
+  - calculate_jacobian
+  - calculate_trajectory
+  - ask_workspace
+  - ask_code_example
+  - provide_joint_angles
+  - provide_position
+  - show_robot_config
+  - reset_conversation
+  - ask_help
+  - ask_what_learned
+  - ask_quiz
 
 entities:
-  - coordinate_x
-  - coordinate_y
-  - coordinate_z
-  - angle_q1
-  - angle_q2
-  - angle_q3
-  - velocity
-  - acceleration
+  - angle_value
+  - position_value
+  - robot_component
 
 slots:
-  point_a_x:
-    type: float
-    influence_conversation: true
-  point_a_y:
-    type: float
-    influence_conversation: true
-  point_a_z:
-    type: float
-    influence_conversation: true
-  point_b_x:
-    type: float
-    influence_conversation: true
-  point_b_y:
-    type: float
-    influence_conversation: true
-  point_b_z:
-    type: float
-    influence_conversation: true
-  velocity_1:
-    type: float
-    influence_conversation: true
-  velocity_2:
-    type: float
-    influence_conversation: true
-  acceleration:
-    type: float
-    influence_conversation: true
+  # Slots pour mémorisation des angles articulaires
   q1:
     type: float
-    influence_conversation: true
+    influence_conversation: false
+    initial_value: 0.0
   q2:
     type: float
-    influence_conversation: true
+    influence_conversation: false
+    initial_value: 0.0
   q3:
     type: float
-    influence_conversation: true
-  simulation_mode:
-    type: text
-    influence_conversation: true
-  last_calculation:
+    influence_conversation: false
+    initial_value: 0.0
+  
+  # Slots pour mémorisation de positions
+  target_x:
+    type: float
+    influence_conversation: false
+  target_y:
+    type: float
+    influence_conversation: false
+  target_z:
+    type: float
+    influence_conversation: false
+  
+  # Mémorisation du contexte d'apprentissage
+  topics_learned:
+    type: list
+    influence_conversation: false
+  
+  last_calculation_type:
     type: text
     influence_conversation: false
+  
+  user_level:
+    type: text
+    influence_conversation: true
+    initial_value: "debutant"
+  
+  # Mémorisation des paramètres du robot
+  link_length_1:
+    type: float
+    influence_conversation: false
+    initial_value: 300.0
+  link_length_2:
+    type: float
+    influence_conversation: false
+    initial_value: 250.0
+  link_length_3:
+    type: float
+    influence_conversation: false
+    initial_value: 150.0
 
 responses:
   utter_greet:
-  - text: "Salut. Je suis votre assistant en robotique. Je peux vous expliquer les concepts, lancer des simulations et effectuer des calculs cinematiques. Dites-moi simplement ce que vous souhaitez faire, comme apprendre les bases ou lancer une simulation."
+  - text: |
+      Bonjour ! Je suis RoboTeach, votre assistant pour apprendre la robotique. 🤖
+      
+      Je peux vous aider à :
+      • Comprendre les concepts de base de la robotique
+      • Effectuer des calculs cinématiques (MGD, MGI, Jacobienne)
+      • Générer des trajectoires
+      • Voir des exemples de code Python
+      
+      Par où voulez-vous commencer ? (Tapez 'aide' pour voir toutes les options)
+
+  utter_goodbye:
+  - text: "Au revoir ! N'hésitez pas à revenir pour en apprendre plus sur la robotique. À bientôt ! 👋"
 
   utter_robot_basics:
   - text: |
-      Un robot fonctionne avec 3 composants principaux :
-      1. Les Capteurs : Pour percevoir l'environnement (cameras, capteurs de force, encodeurs).
-      2. Le Controleur : Le cerveau qui analyse et decide (ordinateur, microcontroleur).
-      3. Les Actionneurs : Pour executer les mouvements (moteurs, verins).
+      Un robot manipulateur fonctionne grâce à 3 composants essentiels :
       
-      Je peux vous montrer une simulation de notre bras robot ou vous expliquer les differents types de robots.
+      1️⃣ **Capteurs** - Les "sens" du robot
+         → Encodeurs (position des moteurs)
+         → Capteurs de force/couple
+         → Caméras de vision
+      
+      2️⃣ **Contrôleur** - Le "cerveau"
+         → Ordinateur embarqué
+         → Calcule les commandes en temps réel
+         → Gère la sécurité
+      
+      3️⃣ **Actionneurs** - Les "muscles"
+         → Moteurs électriques (servomoteurs)
+         → Vérins pneumatiques/hydrauliques
+         → Exécutent les mouvements
+      
+      Voulez-vous en savoir plus sur les types de robots ou les articulations ?
 
   utter_robot_types:
   - text: |
-      Il existe plusieurs types de robots :
-      - Manipulateurs : Bras robots industriels (comme celui de la simulation).
-      - Mobiles : Robots roulants, drones.
-      - Humanoides : Robots a forme humaine.
-      - Industriels : Pour la soudure, l'assemblage, ou le pick & place.
+      Voici les principaux types de robots :
       
-      Voulez-vous lancer une simulation du bras manipulateur ou comprendre ses articulations ?
+      🦾 **Manipulateurs** (comme notre modèle)
+         → Bras articulés industriels
+         → 3 à 7 degrés de liberté
+         → Usage : assemblage, soudure, peinture
+      
+      🚗 **Mobiles**
+         → Robots à roues ou chenilles
+         → Drones aériens
+         → Usage : livraison, exploration
+      
+      🤖 **Humanoïdes**
+         → Forme humaine
+         → Interaction sociale
+         → Recherche avancée
+      
+      🏭 **Collaboratifs (cobots)**
+         → Travaillent avec les humains
+         → Sécurité renforcée
+         → Usage : industrie 4.0
+      
+      Notre chatbot se concentre sur les manipulateurs à 3 articulations.
 
-  utter_articulation_general:
+  utter_articulation:
   - text: |
-      Une articulation (ou joint) relie deux parties du robot et permet le mouvement.
+      Les articulations (ou liaisons) connectent les segments du robot.
       
-      Les deux types principaux sont :
-      - Rotoide (R) : Rotation autour d'un axe (pivot).
-      - Prismatique (P) : Translation le long d'un axe (glissiere).
+      🔄 **Liaison Rotoïde (R)** - Rotation
+         → Tourne autour d'un axe fixe
+         → Paramètre : angle θ (theta)
+         → Exemple : coude, pivot
+         → 1 degré de liberté
       
-      Notre robot possede 3 articulations. Voulez-vous des details techniques ou comprendre les degres de liberte ?
-
-  utter_articulation_specific:
-  - text: |
-      La Liaison Rotoide (R) permet une rotation autour d'un axe fixe avec 1 degre de liberte (angle theta), comme un coude.
+      ↔️ **Liaison Prismatique (P)** - Translation
+         → Glisse le long d'un axe
+         → Paramètre : distance d
+         → Exemple : vérin, ascenseur
+         → 1 degré de liberté
       
-      La Liaison Prismatique (P) permet une translation le long d'un axe avec 1 degre de liberte (distance d), comme un verin.
+      Notre robot 3R possède :
+      • **q1** : rotation de la base (axe vertical)
+      • **q2** : rotation de l'épaule
+      • **q3** : rotation du coude
       
-      Notre bras robot utilise 3 liaisons rotoides nommees q1, q2 et q3.
-
-  utter_control:
-  - text: |
-      Le controle du robot utilise des boucles de regulation :
-      - Consigne : Position desiree.
-      - Mesure : Position actuelle via capteurs.
-      - Erreur : Difference entre consigne et mesure.
-      - Correcteur : Calcule la commande (souvent PID).
-      - Actionneur : Applique la commande.
-      
-      Vous pouvez me demander de voir la generation de trajectoire.
+      Chaque articulation = 1 moteur = 1 angle à contrôler !
 
   utter_dof:
   - text: |
-      Les Degres De Liberte (DDL) sont les mouvements independants possibles.
+      Les **Degrés De Liberté (DDL)** sont les mouvements indépendants possibles.
       
-      Dans l'espace 3D, un objet libre a 6 DDL (3 translations X, Y, Z et 3 rotations).
+      📐 Dans l'espace 3D :
+      • Un objet libre possède 6 DDL
+        - 3 translations (X, Y, Z)
+        - 3 rotations (roulis, tangage, lacet)
       
-      Notre robot a 3 DDL (3 articulations rotoides) :
-      - q1 : rotation de la base.
-      - q2 : rotation du bras.
-      - q3 : rotation de l'avant-bras.
+      🤖 Notre robot 3R :
+      • 3 DDL (3 articulations rotoïdes)
+      • q1, q2, q3 sont les variables articulaires
+      • Peut atteindre des positions (x, y, z)
+      • Mais ne peut pas contrôler l'orientation complète
       
-      Je peux calculer la position (MGD) ou les angles (MGI) si vous le souhaitez.
+      ⚠️ Règle importante :
+      Pour atteindre n'importe quelle position ET orientation dans l'espace (6 DDL), il faut au minimum 6 articulations !
+      
+      Voulez-vous voir un calcul de position avec les angles actuels ?
+
+  utter_control:
+  - text: |
+      Le contrôle d'un robot utilise une **boucle d'asservissement** :
+      
+      📊 Schéma de contrôle :
+      Consigne → [+] → Correcteur → Actionneur → Système
+                  ↑ -                              ↓
+                  └────── Capteur ←─────────────────┘
+      
+      1. **Consigne** : position/vitesse désirée
+      2. **Erreur** : différence (consigne - mesure)
+      3. **Correcteur PID** :
+         • P (Proportionnel) : réagit à l'erreur actuelle
+         • I (Intégral) : corrige l'erreur accumulée
+         • D (Dérivé) : anticipe l'erreur future
+      4. **Actionneur** : applique la commande au moteur
+      5. **Capteur** : mesure la position réelle
+      
+      Le correcteur PID est l'algorithme le plus utilisé en robotique industrielle !
 
   utter_trajectory:
   - text: |
-      Une trajectoire definit le chemin et les vitesses du robot. Notre generateur cree des trajectoires circulaires avec un profil de vitesse trapezoidal (phases d'acceleration, vitesse constante et deceleration).
+      Une **trajectoire** définit le chemin complet du robot dans le temps.
       
-      Voulez-vous voir une animation ou personnaliser les parametres de la trajectoire ?
-
-  utter_math_basics:
-  - text: |
-      Les matrices de transformation homogene (4x4) representent la rotation (matrice 3x3) et la translation (vecteur 3x1) du robot.
+      📈 Composantes d'une trajectoire :
+      • **Chemin** : suite de points (A → B → C...)
+      • **Loi de mouvement** : vitesse à chaque instant
       
-      Nous utilisons les parametres de Denavit-Hartenberg (DH). Je peux vous montrer le calcul du MGD ou les parametres DH.
-
-  utter_units:
-  - text: |
-      Voici les unites utilisees dans notre simulation :
-      - Distances : millimetres (mm).
-      - Angles : radians (rad) pour les calculs internes, degres pour l'affichage.
-      - Vitesses lineaires : mm/s.
-      - Vitesses angulaires : rad/s.
-      - Accelerations : mm/s2 ou rad/s2.
+      🎯 Profil de vitesse trapézoïdal (le plus courant) :
       
-      Notez que PI radians vaut 180 degres.
+      Vitesse
+        ↑     ┌─────────┐
+        │    ╱           ╲
+        │   ╱             ╲
+        │  ╱               ╲
+        └─┴─────────────────┴→ Temps
+          Accél  Cst  Décél
+      
+      Phases :
+      1. **Accélération** : démarrage progressif
+      2. **Vitesse constante** : déplacement rapide
+      3. **Décélération** : arrêt en douceur
+      
+      Je peux calculer une trajectoire entre 2 points si vous voulez !
 
   utter_kinematics:
   - text: |
-      La cinematique etudie le mouvement sans les forces.
+      La **cinématique** étudie le mouvement sans considérer les forces.
       
-      - MGD (Modele Geometrique Direct) : Transforme les angles (q1, q2, q3) en Position (x, y, z).
-      - MGI (Modele Geometrique Inverse) : Transforme la Position (x, y, z) en Angles (q1, q2, q3).
-      - Jacobienne (J) : Relie les vitesses articulaires et operationnelles.
+      🎯 Trois outils essentiels :
       
-      Dites-moi quel calcul vous souhaitez effectuer.
+      **1. MGD** (Modèle Géométrique Direct)
+         Angles (q1, q2, q3) → Position (x, y, z)
+         Question : "Où est l'effecteur ?"
+      
+      **2. MGI** (Modèle Géométrique Inverse)
+         Position (x, y, z) → Angles (q1, q2, q3)
+         Question : "Quels angles pour atteindre ce point ?"
+         ⚠️ Peut avoir plusieurs solutions ou aucune !
+      
+      **3. Jacobienne (J)**
+         Vitesses articulaires ⟷ Vitesses opérationnelles
+         dX = J × dq
+         Permet de détecter les singularités
+      
+      Quel calcul voulez-vous effectuer ?
 
-  utter_example_usage:
+  utter_sensors:
   - text: |
-      Les bras robots sont utilises dans l'industrie pour le Pick & Place (tri), la soudure, la peinture ou l'assemblage de precision.
+      Les **capteurs** donnent au robot la perception de son environnement.
       
-      Je peux lancer une simulation d'exemple de mouvement si vous le demandez.
+      🔧 **Capteurs proprioceptifs** (état interne) :
+      • Encodeurs rotatifs : mesurent les angles articulaires
+      • Capteurs de couple : mesurent les forces dans les moteurs
+      • Accéléromètres : détectent les vibrations
+      
+      👁️ **Capteurs extéroceptifs** (environnement) :
+      • Caméras : vision 2D/3D
+      • Capteurs laser (LIDAR) : mesure de distance
+      • Capteurs de force/pression : détection de contact
+      • Capteurs tactiles : manipulation délicate
+      
+      Les encodeurs sont essentiels : sans eux, le robot serait "aveugle" sur sa propre position !
 
-  utter_clarification:
-  - text: "Je n'ai pas bien compris. Dites-moi ce qui n'est pas clair et je reformulerai plus simplement. Vous pouvez aussi demander de l'aide."
-
-  utter_help:
+  utter_applications:
   - text: |
-      Voici ce que je peux faire pour vous :
+      Les bras robots sont omniprésents dans l'industrie moderne :
       
-      1. Apprentissage : Expliquer les bases, les articulations ou les degres de liberte.
-      2. Simulation : Lancer une simulation simple ou personnalisee.
-      3. Calculs : Effectuer le MGD, le MGI ou calculer la Jacobienne.
-      4. Code : Vous montrer des exemples de code Python.
+      🏭 **Applications industrielles** :
       
-      Quelle partie voulez-vous explorer ?
+      • **Pick & Place** : tri de pièces à haute cadence
+      • **Soudure** : assemblage automobile, précision ±0.1mm
+      • **Peinture** : application uniforme, économie de matière
+      • **Assemblage** : montage électronique, vissage
+      • **Palettisation** : empilement de cartons
+      • **Usinage** : découpe, perçage
+      
+      🔬 **Autres domaines** :
+      • Chirurgie assistée (robot Da Vinci)
+      • Laboratoires (manipulation d'échantillons)
+      • Agroalimentaire (emballage)
+      • Logistique (préparation de commandes)
+      
+      Le marché mondial de la robotique industrielle représente plus de 50 milliards $ !
 
-  utter_ask_coordinates_a:
-  - text: "Veuillez me donner les coordonnees du point de depart A au format X Y Z (en mm). Par exemple : 0 500 600."
+  utter_workspace_info:
+  - text: |
+      L'**espace de travail** (workspace) est l'ensemble des points atteignables par le robot.
+      
+      Pour un robot 3R comme le nôtre :
+      • Forme : volume de révolution (quasi-sphérique)
+      • Rayon max : somme des longueurs de bras
+      • Zone creuse au centre (inaccessible)
+      
+      Limites physiques :
+      • Butées mécaniques des articulations
+      • Collisions entre segments
+      • Singularités (positions dégénérées)
+      
+      Je peux vérifier si un point est atteignable avec la commande 'vérifier workspace'.
 
-  utter_ask_coordinates_b:
-  - text: "Maintenant, donnez-moi les coordonnees du point d'arrivee B au format X Y Z (en mm)."
-
-  utter_ask_velocities:
-  - text: "Quelles vitesses et acceleration souhaitez-vous ? Donnez-les au format Vitesse1 Vitesse2 Acceleration. Par exemple : 10 20 5."
-
-  utter_ask_angles:
-  - text: "Veuillez entrer les 3 angles articulaires en degres au format q1 q2 q3. Par exemple : 45 30 -15."
-
-  utter_simulation_launched:
-  - text: "Lancement de la simulation en cours. Je genere l'animation 3D avec les graphiques de vitesse et acceleration."
-
-  utter_calculation_result:
-  - text: "Calcul termine. Voici les resultats :"
+  utter_ask_help:
+  - text: |
+      🤖 **Aide - Commandes disponibles** :
+      
+      **📚 Apprentissage** :
+      • "c'est quoi un robot" - Bases de la robotique
+      • "types de robots" - Catégories de robots
+      • "articulations" - Liaisons rotoïdes/prismatiques
+      • "degrés de liberté" - Concept de DDL
+      • "contrôle" - Boucle d'asservissement
+      • "trajectoire" - Génération de mouvement
+      • "capteurs" - Types de capteurs
+      • "applications" - Usages industriels
+      
+      **🧮 Calculs** :
+      • "calcule MGD" - Position depuis angles
+      • "calcule MGI" - Angles pour atteindre une position
+      • "calcule jacobienne" - Matrice jacobienne
+      • "génère trajectoire" - Trajectoire entre 2 points
+      • "vérifie workspace" - Point atteignable ?
+      
+      **💻 Code** :
+      • "montre le code" - Exemples Python
+      • "config robot" - Paramètres actuels
+      
+      **📊 Progression** :
+      • "qu'ai-je appris" - Résumé de vos apprentissages
+      • "quiz" - Tester vos connaissances
+      • "reset" - Recommencer
+      
+      Que voulez-vous faire ?
 
   utter_default:
-  - text: "Je n'ai pas compris votre demande. Pourriez-vous reformuler ?"
+  - text: |
+      Je n'ai pas bien compris votre demande. 
+      
+      Quelques suggestions :
+      • Posez une question sur la robotique
+      • Demandez un calcul (MGD, MGI, jacobienne)
+      • Tapez 'aide' pour voir toutes les options
+      
+      Reformulez votre question et je ferai de mon mieux pour vous aider !
+
+  utter_affirm:
+  - text: "Parfait ! Continuons."
+  - text: "Super ! On y va."
+  - text: "D'accord, c'est parti !"
+
+  utter_deny:
+  - text: "Pas de problème. Que voulez-vous faire d'autre ?"
+  - text: "D'accord. Autre chose ?"
 
 actions:
-  - action_run_simulation_simple
-  - action_run_simulation_custom
+  # Actions personnalisées (implémentées dans actions.py)
   - action_calculate_mgd
   - action_calculate_mgi
   - action_calculate_jacobian
-  - action_show_code_example
+  - action_generate_trajectory
   - action_check_workspace
-  - action_advanced_analysis
+  - action_show_code_example
+  - action_show_robot_config
+  - action_reset_slots
+  - action_show_learning_summary
+  - action_quiz_user
+  
+  # Réponses simples
   - utter_greet
+  - utter_goodbye
   - utter_robot_basics
   - utter_robot_types
-  - utter_articulation_general
-  - utter_articulation_specific
-  - utter_control
+  - utter_articulation
   - utter_dof
+  - utter_control
   - utter_trajectory
-  - utter_math_basics
-  - utter_units
   - utter_kinematics
-  - utter_example_usage
-  - utter_clarification
-  - utter_help
-  - utter_ask_coordinates_a
-  - utter_ask_coordinates_b
-  - utter_ask_velocities
-  - utter_ask_angles
-  - utter_simulation_launched
-  - utter_calculation_result
+  - utter_sensors
+  - utter_applications
+  - utter_workspace_info
+  - utter_ask_help
   - utter_default
+  - utter_affirm
+  - utter_deny
 
 session_config:
   session_expiration_time: 60

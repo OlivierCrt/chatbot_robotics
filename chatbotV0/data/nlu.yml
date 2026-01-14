@@ -9,185 +9,342 @@ nlu:
     - Coucou
     - Hello
     - Salutations
+    - Bonsoir
+    - Yo
+    - Hola
+    - Hi
+
+- intent: goodbye
+  examples: |
+    - Au revoir
+    - Bye
+    - À plus
+    - Ciao
+    - Salut
+    - À bientôt
+    - Tchao
+    - Adieu
+    - Je dois y aller
+    - On se voit
+
+- intent: affirm
+  examples: |
+    - Oui
+    - Ouais
+    - Bien sûr
+    - Exactement
+    - Affirmatif
+    - D'accord
+    - OK
+    - Parfait
+    - Vas-y
+    - Continue
+
+- intent: deny
+  examples: |
+    - Non
+    - Nan
+    - Pas vraiment
+    - Je ne pense pas
+    - Négatif
+    - Ça va
+    - Non merci
+    - Pas maintenant
+    - Plus tard
+    - Pas pour l'instant
 
 - intent: ask_robot_basics
   examples: |
-    - comment marche un robot
-    - c'est quoi le principe d'un robot
-    - de quoi est compose un robot ?
-    - fonctionnement d'un robot
-    - elements d'un robot
-    - structure robot
+    - Comment marche un robot
+    - C'est quoi le principe d'un robot
+    - De quoi est composé un robot
+    - Fonctionnement d'un robot
+    - Éléments d'un robot
+    - Structure robot
+    - Comment fonctionne un robot
+    - Les bases de la robotique
+    - Explique moi un robot
+    - Composants d'un robot
+    - Architecture robot
+    - Principe de base
+    - Les fondamentaux
+    - C'est quoi un robot
 
 - intent: ask_robot_types
   examples: |
-    - quels sont les different type de robot
-    - quel type de robot existe
-    - cite moi des categories de robots
-    - types de robots
-    - categories robotique
+    - Quels sont les différents types de robots
+    - Quel type de robot existe
+    - Cite moi des catégories de robots
+    - Types de robots
+    - Catégories robotique
+    - Variétés de robots
+    - Classifications de robots
+    - Les familles de robots
+    - Genres de robots
+    - Espèces de robots
 
-- intent: ask_articulation_general
+- intent: ask_articulation
   examples: |
-    - C est quoi une articulation?
-    - A quoi sert une articulation ?
-    - c'est quoi un joint ?
-    - definition articulation
-    - role articulation
-
-- intent: ask_articulation_specific
-  examples: |
-    - COmment fonctionne une artivulation prismatique plus precisement?
-    - explique moi la liaison rotoide
-    - c'est quoi une glissiere ?
-    - c'est quoi un pivot ?
-    - liaison prismatique
-    - liaison rotoide
+    - C'est quoi une articulation
+    - À quoi sert une articulation
+    - C'est quoi un joint
+    - Définition articulation
+    - Rôle articulation
+    - Comment fonctionne une articulation prismatique
+    - Explique moi la liaison rotoïde
+    - C'est quoi une glissière
+    - C'est quoi un pivot
+    - Liaison prismatique
+    - Liaison rotoïde
+    - Types d'articulations
+    - Joint rotoïde
+    - Joint prismatique
+    - Différence rotoïde prismatique
 
 - intent: ask_control
   examples: |
-    - comment controler le robot?
-    - comment on pilote un robot ?
-    - c'est quoi la boucle de controle ?
-    - systeme de controle
-    - pilotage robot
+    - Comment contrôler le robot
+    - Comment on pilote un robot
+    - C'est quoi la boucle de contrôle
+    - Système de contrôle
+    - Pilotage robot
+    - Asservissement
+    - Contrôleur PID
+    - Régulation robot
+    - Boucle fermée
+    - Comment commander un robot
+    - Correcteur
+    - Commande robot
 
 - intent: ask_dof
   examples: |
-    - C est quoi les degres de liberte?
-    - c'est quoi un DDL ?
-    - degres de liberte explication
-    - nombre de DDL
-    - liberte mouvement
+    - C'est quoi les degrés de liberté
+    - C'est quoi un DDL
+    - Degrés de liberté explication
+    - Nombre de DDL
+    - Liberté mouvement
+    - DDL robot
+    - Combien de degrés de liberté
+    - Mobilité robot
+    - Qu'est ce qu'un degré de liberté
+    - Définition DDL
 
 - intent: ask_trajectory
   examples: |
-    - c est quoi une trajectoire?
-    - comment le robot planifie son mouvement ?
-    - difference entre trajectoire et chemin
-    - planification trajectoire
-    - generation mouvement
-
-- intent: ask_math_basics
-  examples: |
-    - j ai besoin d'un rappel de math
-    - c'est quoi une matrice de transformation ?
-    - Par quoi est represente un robot?
-    - explication geometrique robot
-    - matrices homogenes
-    - repere robot
-
-- intent: ask_units
-  examples: |
-    - quels unite sont utilises?
-    - on parle en degres ou en radians ?
-    - quelle unite pour la vitesse ?
-    - unites robotique
-    - conversion unites
+    - C'est quoi une trajectoire
+    - Comment le robot planifie son mouvement
+    - Différence entre trajectoire et chemin
+    - Planification trajectoire
+    - Génération mouvement
+    - Profil de vitesse
+    - Loi de mouvement
+    - Comment générer une trajectoire
+    - Trajectoire trapézoïdale
+    - Chemin robot
 
 - intent: ask_kinematics
   examples: |
-    - Explqiue moi les vitesses/position/acceleration
-    - c'est quoi la cinematique ?
-    - lien entre position et vitesse robot
+    - Explique moi la cinématique
+    - C'est quoi la cinématique
     - MGD MGI
-    - modele geometrique
-    - jacobienne
+    - Modèle géométrique
+    - Jacobienne
+    - Cinématique directe
+    - Cinématique inverse
+    - Relation position vitesse
+    - Modèle cinématique
+    - Différence MGD MGI
 
-- intent: ask_example_usage
+- intent: ask_sensors
+  examples: |
+    - Quels capteurs utilise un robot
+    - Types de capteurs
+    - C'est quoi un encodeur
+    - Capteurs robotique
+    - Comment le robot perçoit
+    - Perception robot
+    - Capteurs de force
+    - Caméra robot
+    - Capteurs proprioceptifs
+    - Mesure position
+
+- intent: ask_applications
   examples: |
     - Donne moi un exemple d'utilisation du robot
-    - a quoi ça sert un bras robot ?
-    - application industrielle robot
-    - cas d'usage
-    - exemple pratique
+    - À quoi ça sert un bras robot
+    - Application industrielle robot
+    - Cas d'usage
+    - Exemple pratique
+    - Utilisation robot
+    - Dans quels domaines
+    - Industrie robotique
+    - Robots dans les usines
+    - Applications concrètes
 
-- intent: ask_clarification
+- intent: calculate_mgd
   examples: |
-    - Je n 'ai pas compris
-    - peux tu reformuler ?
-    - c'est pas clair
-    - explique mieux
-    - plus simple
+    - Calcule le MGD
+    - Modèle géométrique direct
+    - Position depuis angles
+    - Où est l'effecteur
+    - Calculer position finale
+    - Angles vers position
+    - MGD pour q1 [angle_value](angle_value) q2 [angle_value](angle_value) q3 [angle_value](angle_value)
+    - Calcule position
+    - Cinématique directe
+    - Forward kinematics
+    - Quelle position pour ces angles
+    - Position de l'effecteur
 
-- intent: run_simulation_simple
+- intent: calculate_mgi
   examples: |
-    - lance une simulation
-    - montre moi une simulation
-    - je veux voir le robot bouger
-    - demonstration
-    - exemple de mouvement
-    - simulation simple
-    - voir animation
+    - Calcule le MGI
+    - Modèle géométrique inverse
+    - Angles pour atteindre position
+    - Comment atteindre ce point
+    - Position vers angles
+    - Configuration nécessaire
+    - MGI pour x [position_value](position_value) y [position_value](position_value) z [position_value](position_value)
+    - Cinématique inverse
+    - Inverse kinematics
+    - Quels angles pour atteindre
+    - Configuration articulaire
 
-- intent: run_simulation_custom
+- intent: calculate_jacobian
   examples: |
-    - je veux personnaliser la simulation
-    - creer ma propre trajectoire
-    - simulation avec mes parametres
-    - trajectoire personnalisee
-    - definir points A et B
-    - choisir vitesses
+    - Calcule la jacobienne
+    - Matrice jacobienne
+    - Relation vitesses
+    - Modèle différentiel
+    - Vitesses articulaires
+    - Vitesses opérationnelles
+    - Jacobienne pour q1 [angle_value](angle_value) q2 [angle_value](angle_value) q3 [angle_value](angle_value)
+    - Matrice J
+    - Singularités
+    - Calcul jacobien
 
-- intent: ask_mgd
+- intent: calculate_trajectory
   examples: |
-    - calcule le MGD
-    - modele geometrique direct
-    - position depuis angles
-    - ou est l'effecteur
-    - calculer position finale
-    - angles vers position
-
-- intent: ask_mgi
-  examples: |
-    - calcule le MGI
-    - modele geometrique inverse
-    - angles pour atteindre position
-    - comment atteindre ce point
-    - position vers angles
-    - configuration necessaire
-
-- intent: ask_jacobian
-  examples: |
-    - calcule la jacobienne
-    - matrice jacobienne
-    - relation vitesses
-    - modele differentiel
-    - vitesses articulaires
-    - vitesses operationnelles
-
-- intent: ask_code_example
-  examples: |
-    - montre moi le code
-    - code python
-    - comment coder ca
-    - exemple de code
-    - script simulation
-    - code source
-
-- intent: ask_advanced_analysis
-  examples: |
-    - analyse complete
-    - tous les graphiques
-    - analyse avancee
-    - etude detaillee
-    - profils de vitesse
-    - accelerations
+    - Génère une trajectoire
+    - Calcule trajectoire
+    - Trajectoire de A à B
+    - Planifie mouvement
+    - Crée une trajectoire
+    - Trajectoire entre deux points
+    - Profil de vitesse
+    - Planification de chemin
+    - Génère un mouvement
+    - Interpolation trajectoire
 
 - intent: ask_workspace
   examples: |
-    - espace de travail
-    - zone atteignable
-    - limites robot
-    - portee du robot
-    - espace accessible
-    - peut-il atteindre ce point
+    - Espace de travail
+    - Zone atteignable
+    - Limites robot
+    - Portée du robot
+    - Espace accessible
+    - Peut-il atteindre ce point
+    - Workspace
+    - Volume de travail
+    - Vérifier accessibilité
+    - Point atteignable
+    - Vérifie workspace
+    - Ce point est-il accessible
 
-- intent: help
+- intent: ask_code_example
   examples: |
-    - aide
-    - help
-    - que peux-tu faire
-    - fonctionnalites
-    - commandes disponibles
-    - comment utiliser
+    - Montre moi le code
+    - Code Python
+    - Comment coder ça
+    - Exemple de code
+    - Script simulation
+    - Code source
+    - Implémentation Python
+    - Programme
+    - Fonction Python
+    - Code MGD
+    - Code MGI
+    - Code jacobienne
+
+- intent: provide_joint_angles
+  examples: |
+    - q1 [angle_value](30) q2 [angle_value](45) q3 [angle_value](-20)
+    - [angle_value](0) [angle_value](90) [angle_value](0)
+    - Les angles sont [angle_value](30) [angle_value](60) [angle_value](90)
+    - 45 30 -15
+    - theta1 30 theta2 45 theta3 60
+
+- intent: provide_position
+  examples: |
+    - x [position_value](500) y [position_value](0) z [position_value](600)
+    - [position_value](400) [position_value](200) [position_value](500)
+    - La position est [position_value](300) [position_value](300) [position_value](400)
+    - 500 0 600
+    - position 400 200 300
+
+- intent: show_robot_config
+  examples: |
+    - Montre la configuration
+    - Config robot
+    - Paramètres robot
+    - Configuration actuelle
+    - État du robot
+    - Affiche config
+    - Longueurs des bras
+    - Angles actuels
+    - Paramètres DH
+    - Caractéristiques robot
+
+- intent: reset_conversation
+  examples: |
+    - Reset
+    - Recommence
+    - Remise à zéro
+    - Réinitialise
+    - Efface tout
+    - Nouveau départ
+    - Recommencer à zéro
+    - Clear
+    - Restart
+    - Repart de zéro
+
+- intent: ask_help
+  examples: |
+    - Aide
+    - Help
+    - Que peux-tu faire
+    - Fonctionnalités
+    - Commandes disponibles
+    - Comment utiliser
+    - Guide
+    - Aide moi
+    - Je suis perdu
+    - Options
+    - Menu
+    - Possibilités
+
+- intent: ask_what_learned
+  examples: |
+    - Qu'ai-je appris
+    - Résumé de mes apprentissages
+    - Ce que j'ai vu
+    - Ma progression
+    - Récapitulatif
+    - Bilan
+    - Sujets abordés
+    - Qu'est ce que j'ai étudié
+    - Mon parcours
+    - Historique
+
+- intent: ask_quiz
+  examples: |
+    - Quiz
+    - Teste moi
+    - Question
+    - Évalue mes connaissances
+    - QCM
+    - Contrôle
+    - Vérification
+    - Test de connaissances
+    - Challenge
+    - Interrogation

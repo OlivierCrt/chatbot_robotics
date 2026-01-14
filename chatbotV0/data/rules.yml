@@ -2,69 +2,82 @@ version: "2.0"
 
 rules:
 
-- rule: Say hello
+- rule: Saluer toujours
   steps:
   - intent: greet
   - action: utter_greet
 
-- rule: Ask robot basics
+- rule: Dire au revoir toujours
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Répondre à une aide
+  steps:
+  - intent: ask_help
+  - action: utter_ask_help
+
+- rule: Bases de la robotique
   steps:
   - intent: ask_robot_basics
   - action: utter_robot_basics
 
-- rule: Ask robot types
+- rule: Types de robots
   steps:
   - intent: ask_robot_types
   - action: utter_robot_types
 
-- rule: Ask articulation general
+- rule: Articulations
   steps:
-  - intent: ask_articulation_general
-  - action: utter_articulation_general
+  - intent: ask_articulation
+  - action: utter_articulation
 
-- rule: Ask articulation specific
+- rule: Degrés de liberté
   steps:
-  - intent: ask_articulation_specific
-  - action: utter_articulation_specific
-  # Suggestion visuelle pour comprendre les liaisons
-  # 
-- rule: Ask control
+  - intent: ask_dof
+  - action: utter_dof
+
+- rule: Contrôle robot
   steps:
   - intent: ask_control
   - action: utter_control
 
-- rule: Ask DOF
-  steps:
-  - intent: ask_dof
-  - action: utter_dof
-  # Suggestion visuelle pour les degrés de liberté
-  # 
-- rule: Ask trajectory
+- rule: Trajectoires
   steps:
   - intent: ask_trajectory
   - action: utter_trajectory
 
-- rule: Ask math representation
-  steps:
-  - intent: ask_math_basics
-  - action: utter_math_basics
-
-- rule: Ask units
-  steps:
-  - intent: ask_units
-  - action: utter_units
-
-- rule: Ask kinematics
+- rule: Cinématique
   steps:
   - intent: ask_kinematics
   - action: utter_kinematics
 
-- rule: Ask example
+- rule: Capteurs
   steps:
-  - intent: ask_example_usage
-  - action: utter_example_usage
-  # 
-- rule: Ask clarification
+  - intent: ask_sensors
+  - action: utter_sensors
+
+- rule: Applications
   steps:
-  - intent: ask_clarification
-  - action: utter_clarification
+  - intent: ask_applications
+  - action: utter_applications
+
+- rule: Workspace info
+  steps:
+  - intent: ask_workspace
+  - action: utter_workspace_info
+
+- rule: Affirmation
+  steps:
+  - intent: affirm
+  - action: utter_affirm
+
+- rule: Négation
+  steps:
+  - intent: deny
+  - action: utter_deny
+
+- rule: Réinitialisation
+  steps:
+  - intent: reset_conversation
+  - action: action_reset_slots
