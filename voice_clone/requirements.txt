@@ -1,4 +1,4 @@
+torch==2.5.1
 fastapi==0.128.0
-torch==2.5.1+cpu
 TTS==0.22.0
-TTS==0.22.0
+transformers==4.33.0

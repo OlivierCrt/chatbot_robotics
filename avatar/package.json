@@ -12,7 +12,10 @@
     "vite": "^7.2.4"
   },
   "dependencies": {
-    "@pixiv/three-vrm": "^3.4.4",
+    "@pixiv/three-vrm": "^3.4.5",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "@types/three": "^0.182.0",
     "three": "^0.182.0"
   }
 }

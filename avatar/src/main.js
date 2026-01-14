@@ -219,6 +219,8 @@ async function submit() {
   setUserText(userMsg);
   input.value = "";
 
+  userText = "";
+
   try {
     badge.textContent = "🤖 Rasa…";
     const rasaReply = await sendToRasa(userMsg);
@@ -302,7 +304,7 @@ if (SpeechRecognition) {
       setUserText(merged.trim());
       status.textContent = "OK";
       // option : auto-submit après dictée
-      // submit();
+      submit ();
     }
   };
 
