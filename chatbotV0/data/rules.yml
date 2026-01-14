@@ -32,11 +32,13 @@ rules:
   steps:
   - intent: ask_articulation
   - action: utter_articulation
+  - action: action_illustrer
 
 - rule: Degrés de liberté
   steps:
   - intent: ask_dof
   - action: utter_dof
+  - action: action_illustrer
 
 - rule: Contrôle robot
   steps:

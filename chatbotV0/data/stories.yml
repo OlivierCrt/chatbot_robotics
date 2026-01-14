@@ -13,13 +13,16 @@ stories:
   - action: action_illustrer
   - intent: ask_articulation
   - action: utter_articulation
+  - action: action_illustrer
 
 - story: Apprentissage articulations et DDL
   steps:
   - intent: ask_articulation
   - action: utter_articulation
+  - action: action_illustrer
   - intent: ask_dof
   - action: utter_dof
+  - action: action_illustrer
   - intent: affirm
   - action: utter_affirm
 
