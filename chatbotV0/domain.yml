@@ -34,21 +34,19 @@ entities:
   - robot_component
 
 slots:
-  # Slot permettant determiner quel a été le dernier type de calcul demandé par l'utilisateur
-  calculus:
-    type: text
-    influence_conversation: true
-
   # Slots pour mémorisation des angles articulaires
   q1:
     type: float
     influence_conversation: false
+    initial_value: 0.0
   q2:
     type: float
     influence_conversation: false
+    initial_value: 0.0
   q3:
     type: float
     influence_conversation: false
+    initial_value: 0.0
   
   # Slots pour mémorisation de positions
   target_x:
@@ -60,6 +58,34 @@ slots:
   target_z:
     type: float
     influence_conversation: false
+  
+  # Mémorisation du contexte d'apprentissage
+  topics_learned:
+    type: list
+    influence_conversation: false
+  
+  last_calculation_type:
+    type: text
+    influence_conversation: false
+  
+  user_level:
+    type: text
+    influence_conversation: true
+    initial_value: "debutant"
+  
+  # Mémorisation des paramètres du robot
+  link_length_1:
+    type: float
+    influence_conversation: false
+    initial_value: 300.0
+  link_length_2:
+    type: float
+    influence_conversation: false
+    initial_value: 250.0
+  link_length_3:
+    type: float
+    influence_conversation: false
+    initial_value: 150.0
 
 responses:
   utter_greet:
@@ -338,10 +364,9 @@ responses:
   - text: "D'accord. Autre chose ?"
 
 actions:
-  # Actions impléméntées
+  # Actions basiques
   - action_end_conversation
   - action_illustrer
-  - action_get_specific_help
   
   # Actions personnalisées (devraient étre connéctées avec Digitwin)
   - action_calculate_mgd
@@ -367,6 +392,7 @@ actions:
   - utter_sensors
   - utter_applications
   - utter_workspace_info
+  - utter_ask_help
   - utter_default
   - utter_affirm
   - utter_deny
