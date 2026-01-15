@@ -87,7 +87,7 @@ stories:
 - story: Aide et exploration
   steps:
   - intent: ask_help
-  - action: utter_ask_help
+  - action: action_get_specific_help
   - intent: ask_robot_basics
   - action: utter_robot_basics
 
@@ -126,7 +126,7 @@ stories:
 - story: Incompréhension puis aide
   steps:
   - intent: ask_help
-  - action: utter_ask_help
+  - action: action_get_specific_help
 
 - story: Conversation naturelle avec au revoir
   steps:

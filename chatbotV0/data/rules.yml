@@ -15,7 +15,7 @@ rules:
 - rule: Répondre à une aide
   steps:
   - intent: ask_help
-  - action: utter_ask_help
+  - action: action_get_specific_help
 
 - rule: Bases de la robotique
   steps:
